@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+    background-color: lightblue;
+
+}
+
+.title {
+    padding: 10px 0px;
+}
+
+.title h1 {
+    font-weight: 100;
+    font-style: italic;
+    text-align: center;
+}
+
+.nationality {
+    margin: 10px 0px;
+    padding: 10px;
+}
+
+#container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+}
+
+#content {
+    margin-bottom: 50px;
+    padding: 50px;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 1px rgb(42, 96, 166, 0.2);
+    border: 1px solid rgb(42, 96, 166, 0.2);
+    background-color: #F7F7F7;
+    transition: 0.5s;
+}
+
+#content:hover {
+    box-shadow: 10px 10px 1px rgb(42, 96, 166);
+    border: 1px solid rgb(42, 96, 166);
+}
+
+
+input {
+    padding: 10px;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+input::after {
+    border-color: #5CC36A;
+}
+
+button{
+    padding: 10px 30px;
+    color: rgb(42, 96, 166);
+    background-color: #fff;
+    border: 1px solid rgb(42, 96, 166);
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: rgb(42, 96, 166);
+    border: 1px solid rgb(42, 96, 166);
+    color: #FFF;
+
+}
+
+#gender {
+    margin: 15px;
+}
+
+
+.widthauto {
+    width: auto;
+}
+

@@ -1,0 +1,209 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrati</title>
+</head>
+<body>
+  <div class="title"><h1>Registrazione</h1></div>
+    <div id="container">
+        <div id="content">
+        <form [formGroup] = "registration">
+          <label for="lb_name">Nome</label><br>
+            <input type="text" formControlName="name" id="name" placeholder="Nome" required><br>
+          <label for="lb_name">Cognome</label><br>
+            <input type="text"  formControlName="surname" id="surname" placeholder="Cognome" required><br>
+          <label for="lb_date">Data di nascita</label><br>
+            <input type="date" class="widthauto" formControlName="date" id="date" placeholder="data di nascita"><br>
+            <label for="gender">Sesso </label><br>
+            <select formControlName="gender" id="gender">
+              <option selected>Seleziona</option>
+              <option value="f">Uomo</option>
+              <option value="m">Donna</option>
+              <option value="o">Preferisco non specificare</option>
+            </select><br>
+          <label for="nationality">Nazionalità </label> <br>
+                  <select  formControlName="nationality" class="nationality">
+                    <option value="SELEZIONA">SELEZIONA</option>  
+                    <option value="AFGHAN">AFGANO</option>
+                    <option value="ALBANIAN">ALBANESE</option>
+                    <option value="ALGERIAN">ALGERINO</option>
+                    <option value="AMERICAN">STATUNITENSE</option>
+                    <option value="ANGOLAN">ANGOLANA</option>
+                    <option value="ARGENTINEAN">ARGENTINA</option>
+                    <option value="ARMENIAN">ARMENA</option>
+                    <option value="AUSTRALIAN">AUSTRALIANA</option>
+                    <option value="AUSTRIAN">AUSTRICA</option>
+                    <option value="BAHAMIAN">BAHAMENSE</option>
+                    <option value="BAHRAINI">BAHREINITA</option>
+                    <option value="BARBADIAN">BARBADIANA</option>
+                    <option value="BELGIAN">BELGA</option>
+                    <option value="BANGLADESHI">BENGALESE</option>
+                    <option value="BELIZEAN">BELIZENSE</option>
+                    <option value="BHUTANESE">BHUTANESE</option>
+                    <option value="BELARUSIAN">BIELLORUSSA</option>
+                    <option value="BOLIVIAN">BOLIVIANA</option>
+                    <option value="BOSNIAN">BOSNIACA</option>
+                    <option value="BRAZILIAN">BRASILIANA</option>
+                    <option value="BRITISH">BRITANNICA</option>
+                    <option value="BULGARIAN">BULGARA</option>
+                    <option value="BURKINABE">BURKINABE</option>
+                    <option value="BURUNDIAN">BURUNDESE</option>
+                    <option value="CAMBODIAN">CAMBOGIANA</option>
+                    <option value="CAMEROONIAN">CAMERUNENSE</option>
+                    <option value="CANADIAN">CANADESE</option>
+                    <option value="CAPE VERDEAN">CAPOVERDIANA</option>
+                    <option value="CZECH">CECA</option>
+                    <option value="CENTRAL AFRICAN">CENTRAFRICANA</option>
+                    <option value="CHADIAN">CIADIANA</option>
+                    <option value="CHILEAN">CILENA</option>
+                    <option value="CHINESE">CINESE</option>
+                    <option value="CYPRIOT">CIPRIOTA</option>
+                    <option value="COLOMBIAN">COLOMBIANA</option>
+                    <option value="COMORAN">COMORIANA</option>
+                    <option value="CONGOLESE">CONGOLESE</option>
+                    <option value="COSTA RICAN">COSTARICANA</option>
+                    <option value="CROATIAN">CROATA</option>
+                    <option value="CUBAN">CUBANA</option>
+                    <option value="DANISH">DANESE</option>
+                    <option value="DOMINICAN">DOMINICANA</option>
+                    <option value="ECUADOREAN">ECUADOREGNA</option>
+                    <option value="EGYPTIAN">EGIZIANA</option>
+                    <option value="EMIRIAN">EMIRATINA</option>
+                    <option value="ERITREAN">ERITREA</option>
+                    <option value="ESTONIAN">ESTONE</option>
+                    <option value="ETHIOPIAN">ETIOPE</option>
+                    <option value="FIJIAN">FIGIANA</option>
+                    <option value="FILIPINO">FILIPPINA</option>
+                    <option value="FINNISH">FINLANDESE</option>
+                    <option value="FRENCH">FRANCESE</option>
+                    <option value="GABONESE">GABONENSE</option>
+                    <option value="WELSH">GALLESE</option>
+                    <option value="GAMBIAN">GAMBIANA</option>
+                    <option value="GEORGIAN">GEORGIANA</option>
+                    <option value="GHANAIAN">GHANESE</option>
+                    <option value="JAMAICAN">GIAMAICANA</option>
+                    <option value="JAPANESE">GIAPPONESE</option>
+                    <option value="JORDANIAN">GIORDANA</option>
+                    <option value="GREEK">GRECA</option>
+                    <option value="GUATEMALAN">GUATEMALTECA</option>
+                    <option value="GUINEAN">GUINEANA</option>
+                    <option value="HAITIAN">HAITIANA</option>
+                    <option value="HONDURAN">HONDUREGNA</option>
+                    <option value="INDIAN">INDIANA</option>
+                    <option value="INDONESIAN">INDONESIANA</option>
+                    <option value="IRAQI">IRACHENA</option>
+                    <option value="IRANIAN">IRANIANA</option>
+                    <option value="IRISH">IRLANDESE</option>
+                    <option value="NORTHERN IRISH">IRLANDESE DEL NORD</option>
+                    <option value="ICELANDER">ISLANDESE</option>
+                    <option value="ISRAESLI">ISRAELIANA</option>
+                    <option value="ITALIAN">ITALIANA</option>
+                    <option value="IVORIAN">IVORIANA</option>
+                    <option value="KAZAKHSTANI">KAZKA</option>
+                    <option value="KENYAN">KENIANA</option>
+                    <option value="KUWAITI">KUATIANA</option>
+                    <option value="LEBANESE">LIBANESE</option>
+                    <option value="LIBERIAN">LIBERIANA</option>
+                    <option value="LIBYAN">LIBICA</option>
+                    <option value="LIECHTENSTEINER">LIECHTENSTENIANA</option>
+                    <option value="LUXEMBOURGER">LUSSEMBURGHESER</option>
+                    <option value="LITHUANIAN">LITUANA</option>
+                    <option value="MACEDONIAN">MACEDONE</option>
+                    <option value="MALAGASY">MALAGHESE</option>
+                    <option value="MALDIVAN">MALDIVIANA</option>
+                    <option value="MALIAN">MALIANA</option>
+                    <option value="MALTESE">MALTESE</option>
+                    <option value="MOROCCAN">MAROCCHINA</option>
+                    <option value="MARSHALLESE">MARSHALLESE</option>
+                    <option value="MAURITIAN">MAURITANA</option>
+                    <option value="MAURITANIAN">MAURIZIANA</option>
+                    <option value="MEXICAN">MESSICANA</option>
+                    <option value="MICRONESIAN">MICRONESIANA</option>
+                    <option value="MOLDOVAN">MOLDAVA</option>
+                    <option value="MONACAN">MONEGASCA</option>
+                    <option value="MONGOLIAN">MONGOLA</option>
+                    <option value="MOZAMBICAN">MOZAMBICA</option>
+                    <option value="NAMIBIAN">NAMIBIANA</option>
+                    <option value="NEPALESE">NEPALESE</option>
+                    <option value="NEW ZEALANDER">NEOZELANDESE</option>
+                    <option value="NICARAGUAN">NICARAGUAN</option>
+                    <option value="NIGERIEN">NIGERIANA</option>
+                    <option value="NORTH KOREAN">NORDCOREANA</option>
+                    <option value="NORWEGIAN">NORVEGESE</option>
+                    <option value="DUTCH">OLANDESE</option>
+                    <option value="OMANI">OMANITA</option>
+                    <option value="PAKISTANI">PACHISTANA</option>
+                    <option value="PANAMANIAN">PANAMENSE</option>
+                    <option value="PAPUA NEW GUINEAN">PAPUANA</option>
+                    <option value="PARAGUAYAN">PARAGUAIANA</option>
+                    <option value="PERUVIAN">PERUVIANA</option>
+                    <option value="POLISH">POLACCA</option>
+                    <option value="PORTUGUESE">PORTOGHESE</option>
+                    <option value="ROMANIAN">ROMENA</option>
+                    <option value="RWANDAN">RUANDESE</option>
+                    <option value="RUSSIAN">RUSSA</option>
+                    <option value="SALVADORAN">SALVADOREGNA</option>
+                    <option value="SAMOAN">SAMOANA</option>
+                    <option value="SAN MARINESE">SANMARINESE</option>
+                    <option value="SAUDI">SAUDITA</option>
+                    <option value="SCOTTISH">SCOZZESE</option>
+                    <option value="SENEGALESE">SENEGALESE</option>
+                    <option value="SERBIAN">SERBA</option>
+                    <option value="SIERRA LEONEAN">SIERRA LEONENSE</option>
+                    <option value="SINGAPOREAN">SINGAPORIANA</option>
+                    <option value="SYRIAN">SIRIANA</option>
+                    <option value="SLOVAKIAN">SLOVACCA</option>
+                    <option value="SLOVENIAN">SLOVENA</option>
+                    <option value="SOMALI">SOMALA</option>
+                    <option value="SPANISH">SPAGNOLA</option>
+                    <option value="SRI LANKAN">SRILANCHESE</option>
+                    <option value="SOUTH AFRICAN">SUDAFRICANA</option>
+                    <option value="SUDANESE">SUDANESE</option>
+                    <option value="SOUTH KOREAN">SUDCOREANA</option>
+                    <option value="SWEDISH">SVEDESE</option>
+                    <option value="SWISS">SVIZZERA</option>
+                    <option value="TAIWANESE">TAIWANESE</option>
+                    <option value="TAJIK">TAJIK</option>
+                    <option value="THAI">TAILANDESE</option>
+                    <option value="TANZANIAN">TANZANIAN</option>
+                    <option value="GERMAN">TEDESCA</option>
+                    <option value="TOGOLESE">TOGOLESE</option>
+                    <option value="TONGAN">TONGANA</option>
+                    <option value="TUNISIAN">TUNISIANCA</option>
+                    <option value="TURKISH">TURCA</option>
+                    <option value="UKRAINIAN">UCRAINA</option>
+                    <option value="UGANDAN">UGANDESE</option>
+                    <option value="HUNGARIAN">UNGHERESE</option>
+                    <option value="URUGUAYAN">URUGUAIANA</option>
+                    <option value="UZBEKISTANI">UZBECA</option>
+                    <option value="VENEZUELAN">VENEZUELANA</option>
+                    <option value="VIETNAMESE">VIETNAMITA</option>
+                    <option value="YEMENITE">YEMENITA</option>
+                    <option value="ZAMBIAN">ZAMBESE</option>
+                    <option value="ZIMBABWEAN">ZIMBABWESE</option>
+                </select><br>
+          <label for="lb_cf">Codice Fiscale</label><br>
+          <input type="text"  formControlName="cf" id="cf" placeholder="Codice Fiscale"  required><br>
+          <label for="lb_address">Indirizzo</label><br>
+          <input type="text"  formControlName="address" id="address" placeholder="Indirizzo - Civico"  required><br>
+          <label for="lb_cap">Cap</label><br>
+          <input type="text"  formControlName="cap" id="cap"  placeholder="Cap"><br>
+          <label for="lb_phone_number">Telefono</label><br>
+          <input type="tel"  formControlName="phone_number" id="phone_number" value="+39"  pattern="[0-9]{10}" required><br>
+            <label for="lb_email">Email</label><br>
+          <input type="email"  formControlName="email" id="email" placeholder="Email"  required><br>
+            <label for="lb_password">Password</label><br>
+            <input type="password"  formControlName="password" id="password" placeholder="Password" required><br>
+            <label for="lb_boat_licence">Patente Nautica</label><br>
+            <input type="text"  formControlName="boat_licence" id="boat_licence" placeholder="Patente Nautica" required><br>
+            <input type="checkbox"  formControlName="acceptance" class="widthauto" id="acceptance">
+            <label for="lb_acceptance" class="widthauto">Accettazione informativa sul trattamento dei dati personali (ART. 13 D.LGS. 196/2003) e Regolamento UE 2016/679</label><br><br>
+            <button type="button" (click)="submit()">REGISTRATI</button><br><br>
+          <label for="lb_registration">Hai già  un account? <button><strong (click)="goToLoginPage()">Login</strong></button></label><br>
+        </form>
+        </div>
+      </div>
+</body>
+</html>
