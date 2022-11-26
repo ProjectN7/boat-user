@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, resolveForwardRef } from '@angular/core';
 import { UrlSegmentGroup } from '@angular/router';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/main-content/registrazione/users/user';
-
 /*********  Per creare un service scrivi nella console  ng g s nome-service   ************* */
 
 @Injectable({
@@ -10,21 +10,24 @@ import { User } from 'src/app/main-content/registrazione/users/user';
 })
 export class GestisciUtenteService {
 
-  baseUrl = '';
-
-  constructor(
-    private http: HttpClient
-  ) {
-    this.baseUrl = 'http://localhost:8080/boat_management/users';
-   }
-
-
-   salvaUtente(user: User) { 
-    console.log(user.name);     //dentro al metodo ci devo mettere user, ma l'entità da errore
-    return this.http.post<any>( 
-      this.baseUrl + '/save_user', {"user": user}
-    ).toPromise();
-  }
+  baseUrl= "http://localhost:8080/boatManagement/user";
   
+
+  constructor( private http: HttpClient ) { }
+
+
+  registerUser(user: any) {
+    console.log(user);
+    return this.http.post<any>(this.baseUrl + '/userSave', user).subscribe((resultData: any) => {
+      alert ("Success");
+    });
+    
+  }
+   
+
+
+  user_list(newUser: User) {
+    return this.baseUrl + '/userList', {"user": newUser}
+  }
 
 }

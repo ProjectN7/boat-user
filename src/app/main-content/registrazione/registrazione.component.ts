@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GestisciUtenteService } from 'src/service/gestisci-utente-service';
 
 @Component({
@@ -9,6 +9,7 @@ import { GestisciUtenteService } from 'src/service/gestisci-utente-service';
   styleUrls: ['./registrazione.component.scss']
 })
 export class RegistrationComponent implements OnInit {
+  
 
   // creazione del form da utilizzare per i campi di input
   registration: FormGroup;
@@ -21,36 +22,30 @@ export class RegistrationComponent implements OnInit {
     this.registration = new FormGroup({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
+      date_of_birth: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       nationality: new FormControl('', Validators.required),
       cf: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      cap: new FormControl('', Validators.required),
+      postal_code: new FormControl('', Validators.required),
       phone_number: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       boat_licence: new FormControl('', Validators.required),
     });
+
    }
 
   ngOnInit() {
   }
 
 
-  submit() {
-    console.log(this.registration.value); //risultato visibile sulla console di google
-    if (false) { // ora questo metodo non viene eseguito perché in quanto non è collegato al backend darebbe errore
-      this.gestisciUtenteService.salvaUtente(this.registration.value).then(res => {
-        console.log('utente salvato');
-        // la variabile "res" contiene la risposta dal BE contenente gli oggetti che manda
-        // e lo status della risposta o gli eventuali  errori
-      });
-    }
-  
+    submit() {
+    this.gestisciUtenteService.registerUser(this.registration.value);
   }
 
-  /* Al momento non funziona
+
+  /* Al momento disabled
   isInvalidSelection() {
     return this.registration.value.sesso !== 'O' && this.registration.value.sesso !== 'F' && this.registration.value.sesso !== 'M'
   }

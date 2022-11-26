@@ -15,12 +15,12 @@
           <label for="lb_name">Cognome</label><br>
             <input type="text"  formControlName="surname" id="surname" placeholder="Cognome" required><br>
           <label for="lb_date">Data di nascita</label><br>
-            <input type="date" class="widthauto" formControlName="date" id="date" placeholder="data di nascita"><br>
+            <input type="date" class="widthauto" formControlName="date_of_birth" id="date" placeholder="data di nascita"><br>
             <label for="gender">Sesso </label><br>
             <select formControlName="gender" id="gender">
               <option selected>Seleziona</option>
-              <option value="f">Uomo</option>
-              <option value="m">Donna</option>
+              <option value="m">Uomo</option>
+              <option value="f">Donna</option>
               <option value="o">Preferisco non specificare</option>
             </select><br>
           <label for="nationality">Nazionalità </label> <br>
@@ -189,7 +189,7 @@
           <label for="lb_address">Indirizzo</label><br>
           <input type="text"  formControlName="address" id="address" placeholder="Indirizzo - Civico"  required><br>
           <label for="lb_cap">Cap</label><br>
-          <input type="text"  formControlName="cap" id="cap"  placeholder="Cap"><br>
+          <input type="text"  formControlName="postal_code" id="cap"  placeholder="Cap"><br>
           <label for="lb_phone_number">Telefono</label><br>
           <input type="tel"  formControlName="phone_number" id="phone_number" value="+39"  pattern="[0-9]{10}" required><br>
             <label for="lb_email">Email</label><br>

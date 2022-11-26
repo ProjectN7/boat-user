@@ -33,13 +33,14 @@ export class LoginComponent implements OnInit {
     console.log(this.login.value);
     this.router.navigateByUrl('home');
      //risultato visibile sulla console di google
-    if (false) { // ora questo metodo non viene eseguito perché in quanto non è collegato al backend darebbe errore
+    /*if (false) { // ora questo metodo non viene eseguito perché in quanto non è collegato al backend darebbe errore
       this.gestisciUtenteService.salvaUtente(this.login.value).then(res => {
         console.log('utente salvato');
         // la variabile "res" contiene la risposta dal BE contenente gli oggetti che manda
         // e lo status della risposta o gli eventuali  errori
       });
     }
+    */
 
   }
 
