@@ -9,19 +9,24 @@
     <div class="title"><h1>Inserimento Imbarcazione</h1></div>
     <div id="container">
         <div id="content">
-        <form [formGroup] = "boat-registration">
-            <label for="lb_name">Nome</label><br>
-              <input type="text" formControlName="name" id="name" placeholder="Name" required><br>
-            <label for="lb_name">Colore</label><br>
-              <input type="text"  formControlName="colour" id="colour" placeholder="Colour" required><br>
-            <label for="lb_name">Licenza di Navigazione</label><br>
-              <input type="text"  formControlName="navigation_licence" id="navigation_licence" placeholder="Navigation_licence" required><br>
-            <label for="lb_name">Dichiarazione di Potenza</label><br>
-              <input type="text"  formControlName="power" id="power" placeholder="Power" required><br>
-            <label for="lb_name">Dichiarazione di Conformità</label><br>
-              <input type="text"  formControlName="declaration_of_conformity" id="declaration_of_conformity" placeholder="Declaration_of_conformity" required><br>
-            <label for="lb_name">RCA</label><br>
-              <input type="text"  formControlName="rca" id="rca" placeholder="rca" required><br>
-            <button type="button" (click)="submit()">INVIA</button><br><br>
+          <form [formGroup] = "boat_registration">
+            <label for="lb_name">Targa</label><br>
+                <input type="text" formControlName="licence_plate" id="name" placeholder="Targa" required><br>
+              <label for="lb_name">Nome</label><br>
+                <input type="text" formControlName="name" id="name" placeholder="Nome" required><br>
+              <label for="lb_name">Colore</label><br>
+                <input type="text"  formControlName="colour" id="colour" placeholder="Colore" required><br>
+              <label for="lb_name">Licenza di Navigazione</label><br>
+                <input type="text"  formControlName="navigation_licence" id="navigation_licence" placeholder="Licenza di Navigazione" required><br>
+              <label for="lb_name">Dichiarazione di Potenza</label><br>
+                <input type="text"  formControlName="power" id="power" placeholder="Potenza" required><br>
+              <label for="lb_name">Dichiarazione di Conformità</label><br>
+                <input type="text"  formControlName="declaration_of_conformity" id="declaration_of_conformity" placeholder="Dichiarazione di conformità" required><br>
+              <label for="lb_name">RCA</label><br>
+                <input type="text"  formControlName="rca" id="rca" placeholder="Rca" required><br>
+              <button type="button" (click)="submit()">INVIA</button><br><br>
+          </form>
+          </div>
+    </div>
 </body>
 </html>

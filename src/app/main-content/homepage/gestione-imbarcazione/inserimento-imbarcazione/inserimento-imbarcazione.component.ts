@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.service';
 
@@ -10,14 +11,14 @@ import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.s
 export class InserimentoImbarcazioneComponent {
 
   //boat_registration: FormGroup;
+  boat_registration: FormGroup;
 
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
   ) {
-    // assegnazione dei campi al form, che verranno poi richiamati nell'input con l'attributo formControlName
     
-    /*this.boat_registration = new FormGroup({
+    this.boat_registration = new FormGroup({
       licence_plate: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       colour: new FormControl('', Validators.required),
@@ -26,12 +27,12 @@ export class InserimentoImbarcazioneComponent {
       declaration_of_conformity: new FormControl('', Validators.required),
       rca: new FormControl('', Validators.required),
     });
-*/
+
    }
 
 
     submit() {
-    //this.gestisciImbarcazioneService.registerBoat(this.boat_registration.value);
+    this.gestisciImbarcazioneService.registerBoat(this.boat_registration.value);
   }
 
 
