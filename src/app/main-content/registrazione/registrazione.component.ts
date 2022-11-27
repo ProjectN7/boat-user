@@ -8,7 +8,7 @@ import { GestisciUtenteService } from 'src/service/gestisci-utente-service';
   templateUrl: './registrazione.component.html',
   styleUrls: ['./registrazione.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
   
 
   // creazione del form da utilizzare per i campi di input
@@ -35,9 +35,6 @@ export class RegistrationComponent implements OnInit {
     });
 
    }
-
-  ngOnInit() {
-  }
 
 
     submit() {

@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './main-content/login/login.component';
 import { RegistrationComponent } from './main-content/registrazione/registrazione.component';
+import { GestioneImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/gestione-imbarcazione.component';
+import { GestioneProfiloComponent } from './main-content/homepage/gestione-profilo/gestione-profilo.component';
+import { InserimentoImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/inserimento-imbarcazione/inserimento-imbarcazione.component';
 
 
 
@@ -14,7 +17,10 @@ import { RegistrationComponent } from './main-content/registrazione/registrazion
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    GestioneImbarcazioneComponent,
+    GestioneProfiloComponent,
+    InserimentoImbarcazioneComponent
     
   ],
   imports: [

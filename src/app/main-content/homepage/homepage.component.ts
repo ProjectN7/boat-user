@@ -20,5 +20,8 @@ export class HomepageComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  goToPage(urlpagina: any) {
+    return this.router.navigateByUrl(urlpagina);
+  }
 
 }
