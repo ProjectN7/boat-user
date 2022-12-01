@@ -18,7 +18,7 @@ export class GestisciUtenteService {
 
   registerUser(user: any) {
     console.log(user);
-    return this.http.post<any>(this.baseUrl + '/userSave', user).subscribe((resultData: any) => {
+    return this.http.post<any>(this.baseUrl + '/userSave', user).subscribe((res: any) => {
       alert ("Success");
     });
     

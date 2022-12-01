@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRENOTAZIONE BANCHINA</title>
+</head>
+<body>
+    <div class="title"><h1>PRENOTAZIONE BANCHINA</h1></div>
+    <div id="container">
+        <div id="content">
+          <form>
+            <label for="lb_name">Scegli il Molo</label><br>
+            <select [(ngModel)]="valueSelected" formControlName="licencePlate" id="boatSelect">
+                <option></option>
+            </select>
+            <div>{{valueSelected}}</div>
+              <button type="button" (click)="goBack()">INDIETRO</button>
+              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
+              <div>{{rispostaBe | json }}</div>
+          </form>
+          </div>
+    </div>
+</body>
+</html>

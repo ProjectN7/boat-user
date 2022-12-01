@@ -3,31 +3,38 @@ import { Injectable, resolveForwardRef } from '@angular/core';
 import { UrlSegmentGroup } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Boat } from 'src/app/main-content/homepage/gestione-imbarcazione/boat/boat';
-import { User } from 'src/app/main-content/registrazione/users/user';
+
 /*********  Per creare un service scrivi nella console  ng g s nome-service   ************* */
 
 @Injectable({
   providedIn: 'root'
 })
 export class GestioneImbarcazioneService {
-
-  baseUrl= "http://localhost:8080/boatManagement/boat";
+  boatValue = "";
+  baseUrl= "http://localhost:8090/boatManagement";
   
 
   constructor( private http: HttpClient ) { }
 
 
   registerBoat(boat: any) {
-    console.log(boat);
-    return this.http.post<any>(this.baseUrl + '/boatSave', boat).subscribe((resultData: any) => {
-      alert ("Success");
-    });
+    return this.http.post<any>(this.baseUrl + '/boat/boatSave', boat);
     
+  }
+
+  modifyBoat(boat: any) {
+    return this.http.post<any>(this.baseUrl + '/modificaBoat/' + boat.licencePlate, boat);
   }
   
 
-  user_list(boat: Boat) {
-    return this.baseUrl + '/boatList', {"boat": boat}
+  getBoatByLicencePlate(licencePlate: any) {
+    return this.http.get<any>(this.baseUrl + '/boat/boatList?licencePlate=' + licencePlate);
+    
+  }
+
+
+  getAllBoat() {
+    return this.http.get<any>(this.baseUrl + '/boat/boatAllList');
   }
 
 }

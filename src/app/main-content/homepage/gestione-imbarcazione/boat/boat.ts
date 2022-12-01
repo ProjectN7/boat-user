@@ -1,21 +1,21 @@
 import { UrlSegmentGroup } from "@angular/router";
 
 export class Boat {
-    licence_plate: string;
+    licencePlate: string;
     name: string;
     colour: string;
-    navigation_licence: string;
+    navigationLicence: string;
     power: string;
-    declaration_of_conformity: string;
+    declarationOfConformity: string;
     rca: string;
 
     constructor() {
-        this.licence_plate = "";
+        this.licencePlate = "";
         this.name = "";
         this.colour = "";
-        this.navigation_licence = "";
+        this.navigationLicence = "";
         this.power = "";
-        this.declaration_of_conformity = "";
+        this.declarationOfConformity = "";
         this.rca = "";
     }
 

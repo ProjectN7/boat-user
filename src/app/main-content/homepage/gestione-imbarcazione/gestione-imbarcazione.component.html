@@ -6,10 +6,12 @@
     <title>Homepage</title>
 </head>
 <body>
-    <div class="title"><h1>Benvenuto!</h1></div><br>
+    <div class="title"><h1>GESTIONE IMBARCAZIONE</h1></div><br>
     <div id="container">
         <div id="content">
-            <button type="button" (click)=" goToPage('gestione-imbarcazione/inserimento-imbarcazione')">AGGIUNGI IMBARCAZIONE</button><br>
+            <button type="button" (click)="goToPage('home/gestione-imbarcazione/inserimento-imbarcazione')">AGGIUNGI IMBARCAZIONE</button><br>
+            <button type="button" (click)="goToPage('home/gestione-imbarcazione/modifica-imbarcazione')">MODIFICA IMBARCAZIONE</button><br>
+            <button type="button" (click)="goBack()">INDIETRO</button><br>
         </div>
     </div>
 </body>

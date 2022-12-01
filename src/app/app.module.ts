@@ -10,6 +10,8 @@ import { RegistrationComponent } from './main-content/registrazione/registrazion
 import { GestioneImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/gestione-imbarcazione.component';
 import { GestioneProfiloComponent } from './main-content/homepage/gestione-profilo/gestione-profilo.component';
 import { InserimentoImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/inserimento-imbarcazione/inserimento-imbarcazione.component';
+import { ModificaImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/modifica-imbarcazione/modifica-imbarcazione.component';
+import { PrenotazioneBanchinaComponent } from './main-content/homepage/gestione-imbarcazione/prenotazione-banchina/prenotazione-banchina.component';
 
 
 
@@ -20,7 +22,9 @@ import { InserimentoImbarcazioneComponent } from './main-content/homepage/gestio
     LoginComponent,
     GestioneImbarcazioneComponent,
     GestioneProfiloComponent,
-    InserimentoImbarcazioneComponent
+    InserimentoImbarcazioneComponent,
+    ModificaImbarcazioneComponent,
+    PrenotazioneBanchinaComponent
     
   ],
   imports: [

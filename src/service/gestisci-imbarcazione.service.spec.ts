@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GestisciImbarcazioneService } from './gestisci-imbarcazione.service';
+import { GestioneImbarcazioneService } from './gestisci-imbarcazione.service';
 
 describe('GestisciImbarcazioneService', () => {
-  let service: GestisciImbarcazioneService;
+  let service: GestioneImbarcazioneService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GestisciImbarcazioneService);
+    service = TestBed.inject(GestioneImbarcazioneService);
   });
 
   it('should be created', () => {

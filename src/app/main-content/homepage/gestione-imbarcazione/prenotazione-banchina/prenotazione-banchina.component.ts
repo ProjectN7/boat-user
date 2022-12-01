@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-gestione-imbarcazione',
-  templateUrl: './gestione-imbarcazione.component.html',
-  styleUrls: ['./gestione-imbarcazione.component.scss']
+  selector: 'app-prenotazione-banchina',
+  templateUrl: './prenotazione-banchina.component.html',
+  styleUrls: ['./prenotazione-banchina.component.scss']
 })
-export class GestioneImbarcazioneComponent {
-  
+export class PrenotazioneBanchinaComponent {
+  rispostaBe: any;
+  valueSelected: any;
 
   constructor(
     private router: Router
@@ -22,5 +22,7 @@ export class GestioneImbarcazioneComponent {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
+  submit() {
 
+  }
 }

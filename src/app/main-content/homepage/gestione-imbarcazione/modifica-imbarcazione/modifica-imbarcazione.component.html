@@ -3,19 +3,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserimento Imbarcazione</title>
+    <title>Modifica Imbarcazione</title>
+    
 </head>
 <body>
-    <div class="title"><h1>INSERIMENTO IMBARCAZIONE</h1></div>
+    <div class="title"><h1>Modifica Imbarcazione</h1></div>
     <div id="container">
         <div id="content">
-          <form [formGroup] = "boatRegistration">
+          <form [formGroup] = "boatModification">
             <label for="lb_name">Targa</label><br>
-                <input type="text" formControlName="licencePlate" id="name" placeholder="Targa" required><br>
+            <select [(ngModel)]="valueSelected" formControlName="licencePlate" id="boatSelect" (click)="getBoatList()" (change)="getSingleBoat(valueSelected)">
+              <option *ngFor="let response of rispostaBe" [value]="response">{{response}}</option>
+            </select>
             <label for="lb_name">Codice Fiscale</label><br>
-                <input type="text" formControlName="cf" id="name" placeholder="Codice Fiscale" required><br>
+                <input type="text" formControlName="cf" id="Targa" placeholder="Codice Fiscale" required><br>
               <label for="lb_name">Nome Imbarcazione</label><br>
-                <input type="text" formControlName="name" id="name" placeholder="Nome" required><br>
+                <input type="text" formControlName="name" id="name" placeholder="Nome"><br>
               <label for="lb_name">Colore</label><br>
                 <input type="text"  formControlName="colour" id="colour" placeholder="Colore" required><br>
               <label for="lb_name">Licenza di Navigazione</label><br>
@@ -28,7 +31,6 @@
                 <input type="text"  formControlName="rca" id="rca" placeholder="Rca" required><br>
               <button type="button" (click)="goBack()">INDIETRO</button>
               <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
-              <div>{{rispostaBe | json }}</div>
           </form>
           </div>
     </div>

@@ -1,0 +1,10 @@
+{
+    "": {
+      "target": "http://localhost:8090/boatManagement/modificaBoat/",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": "/home/gestione-imbarcazione/modifica-imbarcazione"
+      }
+    }
+  }

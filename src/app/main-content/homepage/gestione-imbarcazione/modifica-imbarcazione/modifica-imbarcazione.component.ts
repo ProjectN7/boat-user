@@ -2,26 +2,27 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.service';
+import { Boat } from '../boat/boat';
+
+
 
 @Component({
-  selector: 'app-inserimento-imbarcazione',
-  templateUrl: './inserimento-imbarcazione.component.html',
-  styleUrls: ['./inserimento-imbarcazione.component.scss']
+  selector: 'app-modifica-imbarcazione',
+  templateUrl: './modifica-imbarcazione.component.html',
+  styleUrls: ['./modifica-imbarcazione.component.scss']
 })
-export class InserimentoImbarcazioneComponent {
-
-  //boat_registration: FormGroup;
+export class ModificaImbarcazioneComponent {
+  valueSelected: any;
   rispostaBe: any;
   err: any;
-  boatRegistration: FormGroup;
-  response: any;
+
+  boatModification: FormGroup;
 
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
   ) {
-    
-    this.boatRegistration = new FormGroup({
+    this.boatModification = new FormGroup({
       licencePlate: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       colour: new FormControl('', Validators.required),
@@ -36,24 +37,47 @@ export class InserimentoImbarcazioneComponent {
 
 
    submit() {
-    return this.gestisciImbarcazioneService.registerBoat(this.boatRegistration.value).subscribe({ 
+    return this.gestisciImbarcazioneService.modifyBoat(this.boatModification.value).subscribe({ 
       next: (rispostaBe) => {
-        console.log(rispostaBe);
-        this.rispostaBe = rispostaBe;
+        this.boatModification = rispostaBe;
+        console.log("passo da qui");
       },
       error: (err) => {
         this.err = this.err;
         alert(this.err);
       },
     });
- 
   }
 
+  
   goBack() {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
+  getBoatList() {
+    return this.gestisciImbarcazioneService.getAllBoat().subscribe({
+      next: (rispostaBe) => {
+        this.rispostaBe = rispostaBe;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+  });
+
+}
 
 
+getSingleBoat(valueSelected: any) {
+  return this.gestisciImbarcazioneService.getBoatByLicencePlate(valueSelected).subscribe({
+    next: (rispostaBe) => {
+      this.boatModification = rispostaBe;
+      console.log(this.boatModification);
+    },
+    error: (err) => {
+      console.log(err);
+    }
+});
 
+
+}
 }
