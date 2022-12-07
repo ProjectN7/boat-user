@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-prenotazione-banchina',
-  templateUrl: './prenotazione-banchina.component.html',
-  styleUrls: ['./prenotazione-banchina.component.scss']
+  selector: 'app-richiesta-servizi',
+  templateUrl: './richiesta-servizi.component.html',
+  styleUrls: ['./richiesta-servizi.component.scss']
 })
-export class PrenotazioneBanchinaComponent {
-  rispostaBe: any;
-  valueSelected: any;
+
+
+export class RichiestaServiziComponent {
+  
 
   constructor(
     private router: Router
@@ -22,7 +23,5 @@ export class PrenotazioneBanchinaComponent {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
-  submit() {
 
-  }
 }

@@ -16,7 +16,7 @@
               <option *ngFor="let response of rispostaBe" [value]="response">{{response}}</option>
             </select>
             <label for="lb_name">Codice Fiscale</label><br>
-                <input type="text" formControlName="cf" id="Targa" placeholder="Codice Fiscale" required><br>
+                <input type="text" formControlName="cf" id="Targa" placeholder="Codice Fiscale" required [value]=""><br>
               <label for="lb_name">Nome Imbarcazione</label><br>
                 <input type="text" formControlName="name" id="name" placeholder="Nome"><br>
               <label for="lb_name">Colore</label><br>
@@ -31,6 +31,7 @@
                 <input type="text"  formControlName="rca" id="rca" placeholder="Rca" required><br>
               <button type="button" (click)="goBack()">INDIETRO</button>
               <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
+              <div>{{rispostaBe}}</div>
           </form>
           </div>
     </div>

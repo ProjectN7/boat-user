@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-gestione-profilo',
-  templateUrl: './gestione-profilo.component.html',
-  styleUrls: ['./gestione-profilo.component.scss']
+  selector: 'app-gestione-banchina',
+  templateUrl: './gestione-banchina.component.html',
+  styleUrls: ['./gestione-banchina.component.scss']
 })
-export class GestioneProfiloComponent { 
+export class GestioneBanchinaComponent {
 
   constructor(
     private router: Router
@@ -21,5 +21,5 @@ export class GestioneProfiloComponent {
   }
 
 
-}
 
+}

@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRENOTAZIONE BANCHINA</title>
+    
+</head>
+<body>
+    <div class="title"><h1>PRENOTAZIONE BANCHINA</h1></div>
+    <div id="container">
+        <div id="content">
+          <form [formGroup] = "quaysideReservation">
+            <label for="lb_licencePlate">Targa</label><br>
+            <select [(ngModel)]="lpSelected" formControlName="licencePlate" id="itemSelect" (click)="getBoatList()">
+              <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
+            </select>
+            <label for="lb_pier">Molo</label><br>
+            <select [(ngModel)]="pierSelected" formControlName="pier" id="itemSelect" (click)="getPierList()">
+              <option *ngFor="let responsePier of rispostaBePier" [value]="responsePier">{{responsePier}}</option>
+            </select>
+            <label for="lb_quayside">Banchina</label><br>
+            <select [(ngModel)]="quaysideSelected" formControlName="quayside" id="itemSelect" (click)="getQuaysideByIdPier(pierSelected)">
+              <option *ngFor="let response of rispostaBeQuaysideActive" [value]="response">{{response}}</option>
+            </select>
+              <label for="lb_datetime">Data Inizio Prenotazione</label><br>
+                <input type="date"  formControlName="dateTimeFrom" id="dateTimeTo" placeholder="Data Inizio Prenotazione" required><br>
+              <label for="lb_name">Data Fine Prenotazione</label><br>
+                <input type="date"  formControlName="dateTimeTo" id="dateTimeTo" placeholder="Data Fine Prenotazione" required><br>
+              <button type="button" (click)="goBack()">INDIETRO</button>
+              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
+              <div>{{rispostaBeReservation}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  
+          </form>
+          </div>
+    </div>
+</body>
+</html>

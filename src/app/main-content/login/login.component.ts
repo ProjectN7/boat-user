@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
 
   // creazione del form da utilizzare per i campi di input
   login: FormGroup;
+  err: any;
+  rispostaBeLogin: any;
+  email: any
+  password: any;
 
   constructor(
     private router: Router,
@@ -30,22 +34,19 @@ export class LoginComponent implements OnInit {
 
 
   submit() {
-    console.log(this.login.value);
-    this.router.navigateByUrl('home');
-     //risultato visibile sulla console di google
-    /*if (false) { // ora questo metodo non viene eseguito perché in quanto non è collegato al backend darebbe errore
-      this.gestisciUtenteService.salvaUtente(this.login.value).then(res => {
-        console.log('utente salvato');
-        // la variabile "res" contiene la risposta dal BE contenente gli oggetti che manda
-        // e lo status della risposta o gli eventuali  errori
-      });
-    }
-    */
+   
+      this.gestisciUtenteService.loginUser(this.login.value).subscribe({
+        next: (rispostaBeLogin) => {
+        this.rispostaBeLogin = rispostaBeLogin.response;
+        this.router.navigateByUrl("home");
+      },
+      error: (err) => {
+        this.err = err.error;
+        console.log(this.err);
+      },
+    });
 
-  }
 
-  isInvalidSelection() {
-    return this.login.value.sesso !== 'O' && this.login.value.sesso !== 'F' && this.login.value.sesso !== 'M'
   }
 
   goToRegistrationPage() {

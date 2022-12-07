@@ -32,9 +32,28 @@ export class GestioneImbarcazioneService {
     
   }
 
-
   getAllBoat() {
     return this.http.get<any>(this.baseUrl + '/boat/boatAllList');
+  }
+
+  getAllPier() {
+    return this.http.get<any>(this.baseUrl + '/pier/pierAllList');
+  }
+
+  getQuayside(pier: any) {
+    return this.http.get<any>(this.baseUrl + '/quayside/quaysideAllList?pier=' + pier);
+  }
+
+  CreateReservation(reservation: any) {
+    return this.http.post<any>(this.baseUrl + '/reservation/reservationSave', reservation);
+  }
+
+  getReservationsbyLpService(licencePlate: any) {
+    return this.http.get<any>(this.baseUrl + '/reservation/reservationListLicencePlate?licencePlate=' + licencePlate);
+  }
+
+  deleteReservation(licencePlate: any) {
+    return this.http.delete<any>(this.baseUrl + '/reservation/reservationDelete/' + licencePlate);
   }
 
 }

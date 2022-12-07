@@ -28,7 +28,7 @@
                 <input type="text"  formControlName="rca" id="rca" placeholder="Rca" required><br>
               <button type="button" (click)="goBack()">INDIETRO</button>
               <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
-              <div>{{rispostaBe | json }}</div>
+              <div>{{rispostaBeSubmit}}{{err}}</div>
           </form>
           </div>
     </div>

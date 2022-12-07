@@ -13,8 +13,8 @@ import { Boat } from '../boat/boat';
 })
 export class ModificaImbarcazioneComponent {
   valueSelected: any;
-  rispostaBe: any;
   err: any;
+  rispostaBe: any;
 
   boatModification: FormGroup;
 
@@ -39,8 +39,8 @@ export class ModificaImbarcazioneComponent {
    submit() {
     return this.gestisciImbarcazioneService.modifyBoat(this.boatModification.value).subscribe({ 
       next: (rispostaBe) => {
-        this.boatModification = rispostaBe;
-        console.log("passo da qui");
+        this.boatModification = rispostaBe.response;
+        window.location.reload();
       },
       error: (err) => {
         this.err = this.err;
@@ -66,12 +66,19 @@ export class ModificaImbarcazioneComponent {
 
 }
 
-
 getSingleBoat(valueSelected: any) {
   return this.gestisciImbarcazioneService.getBoatByLicencePlate(valueSelected).subscribe({
     next: (rispostaBe) => {
-      this.boatModification = rispostaBe;
-      console.log(this.boatModification);
+      this.boatModification.patchValue({
+        licencePlate: rispostaBe.licencePlate,
+        cf: rispostaBe.cf,
+        name: rispostaBe.name,
+        colour: rispostaBe.colour,
+        navigationLicence: rispostaBe.navigationLicence,
+        power: rispostaBe.power,
+        declarationOfConformity: rispostaBe.declarationOfConformity,
+        rca: rispostaBe.rca,
+      });
     },
     error: (err) => {
       console.log(err);

@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISDETTA BANCHINA</title>
+    
+</head>
+<body>
+    <div class="title"><h1>DISDETTA BANCHINA</h1></div>
+    <div id="container">
+        <div id="content">
+          <form>
+            <label for="lb_licencePlate">Targa</label><br>
+            <select [(ngModel)]="lpSelected" name="licencePlate" id="itemSelect" (click)="getBoatList()">
+              <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
+            </select>
+            <label for="lb_pier">Prenotazioni</label><br>
+            <select [(ngModel)]="reservationSelected" name="reservations" id="itemSelect" (click)="getReservationByLp(lpSelected)">
+              <option>{{rispostaBeReservationQuayside}}</option>
+            </select>
+              <button type="button" (click)="goBack()">INDIETRO</button>
+              <button type="button" id="btn2" (click)="submit(lpSelected)">INVIA</button><br><br>
+              <div>{{rispostaBeReservation}}{{err}}{{rispostaBeSubmit}}</div>
+          </form>
+          </div>
+    </div>
+</body>
+</html>

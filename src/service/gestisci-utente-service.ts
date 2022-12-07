@@ -10,18 +10,19 @@ import { User } from 'src/app/main-content/registrazione/users/user';
 })
 export class GestisciUtenteService {
 
-  baseUrl= "http://localhost:8080/boatManagement/user";
+  baseUrl= "http://localhost:8081/boatManagement/user";
   
 
   constructor( private http: HttpClient ) { }
 
 
-  registerUser(user: any) {
-    console.log(user);
-    return this.http.post<any>(this.baseUrl + '/userSave', user).subscribe((res: any) => {
-      alert ("Success");
-    });
-    
+  registerUser(userRegistration: any) {
+    return this.http.post<any>(this.baseUrl + '/userSave', userRegistration);
+  }
+
+  loginUser(userLogin: any) {
+    console.log(userLogin);
+    return this.http.post<any>(this.baseUrl + 'user/userLogin', userLogin);
   }
   
 

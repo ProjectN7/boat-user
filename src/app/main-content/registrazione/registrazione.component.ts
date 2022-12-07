@@ -10,7 +10,8 @@ import { GestisciUtenteService } from 'src/service/gestisci-utente-service';
 })
 export class RegistrationComponent {
   
-
+  rispostaBe: any;
+  err: any;
   // creazione del form da utilizzare per i campi di input
   registration: FormGroup;
 
@@ -35,18 +36,19 @@ export class RegistrationComponent {
     });
 
    }
-
-
-    submit() {
-    this.gestisciUtenteService.registerUser(this.registration.value);
+  
+  submit() {
+    return this.gestisciUtenteService.registerUser(this.registration.value).subscribe({ 
+      next: (rispostaBe) => {
+        this.rispostaBe = rispostaBe.response;
+        this.router.navigateByUrl("home");
+      },
+      error: (err) => {
+        this.err = err.error;
+      },
+    });
   }
 
-
-  /* Al momento disabled
-  isInvalidSelection() {
-    return this.registration.value.sesso !== 'O' && this.registration.value.sesso !== 'F' && this.registration.value.sesso !== 'M'
-  }
-  */
 
   goToLoginPage() {
     this.router.navigateByUrl('login');

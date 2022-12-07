@@ -11,7 +11,7 @@ import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.s
 export class InserimentoImbarcazioneComponent {
 
   //boat_registration: FormGroup;
-  rispostaBe: any;
+  rispostaBeSubmit: any;
   err: any;
   boatRegistration: FormGroup;
   response: any;
@@ -37,13 +37,11 @@ export class InserimentoImbarcazioneComponent {
 
    submit() {
     return this.gestisciImbarcazioneService.registerBoat(this.boatRegistration.value).subscribe({ 
-      next: (rispostaBe) => {
-        console.log(rispostaBe);
-        this.rispostaBe = rispostaBe;
+      next: (rispostaBeSubmit) => {
+        this.rispostaBeSubmit = rispostaBeSubmit.response;
       },
       error: (err) => {
-        this.err = this.err;
-        alert(this.err);
+        this.err = err.response;
       },
     });
  

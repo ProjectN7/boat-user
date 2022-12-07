@@ -12,13 +12,15 @@
       <div id="container">
         <div id="content">
         <form [formGroup]="login" align="center">
+          
           <label for="lb_email">Email</label><br>
-          <input type="text" class="widthauto" formControlName="email" id="email" placeholder="Email" required><br>
+          <input type="text" class="widthauto" formControlName="email" id="email" placeholder="Email" ><br>
           <label for="lb_password" >Password</label><br>
           <input type="password" class="widthauto" formControlName="password" id="password" placeholder="Password" required><br>
           <button type="button" value="submit" (click)="submit()">INVIA</button><br>
           <label for="lb_registrati">Non hai un account? <a href="registration" (click)="goToRegistrationPage()">Registrati</a></label><br>
           <a href="password_dimenticata.html">Password dimenticata?</a>
+          <div>{{rispostaBeLogin}}</div>
         </form>
         </div>
       </div>
