@@ -17,10 +17,9 @@ import { ModificaProfiloComponent } from './main-content/homepage/gestione-profi
 import { ReimpostazioneCredenzialiComponent } from './main-content/homepage/gestione-profilo/reimpostazione-credenziali/reimpostazione-credenziali.component';
 import { CancellazioneImbarcazioneComponent } from './main-content/homepage/gestione-imbarcazione/cancellazione-imbarcazione/cancellazione-imbarcazione.component';
 import { RichiestaServiziComponent } from './main-content/homepage/richiesta-servizi/richiesta-servizi.component';
-import { ManutenzioneComponent } from './main-content/homepage/richiesta-servizi/manutenzione/manutenzione.component';
-import { PulizieComponent } from './main-content/homepage/richiesta-servizi/pulizie/pulizie.component';
-import { RifornimentoComponent } from './main-content/homepage/richiesta-servizi/rifornimento/rifornimento.component';
 import { GestioneBanchinaComponent } from './main-content/homepage/gestione-banchina/gestione-banchina.component';
+import { RichiestaTicketComponent } from './main-content/homepage/richiesta-servizi/richiesta-ticket/richiesta-ticket.component';
+import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servizi/disdetta-ticket/disdetta-ticket.component';
 
 
 @NgModule({
@@ -38,10 +37,9 @@ import { GestioneBanchinaComponent } from './main-content/homepage/gestione-banc
     ReimpostazioneCredenzialiComponent,
     CancellazioneImbarcazioneComponent,
     RichiestaServiziComponent,
-    ManutenzioneComponent,
-    PulizieComponent,
-    RifornimentoComponent,
     GestioneBanchinaComponent,
+    RichiestaTicketComponent,
+    DisdettaTicketComponent,
     
   ],
   imports: [

@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICHIESTA TICKET</title>
+    
+</head>
+<body>
+    <div class="title"><h1>RICHIESTA TICKET</h1></div>
+    <div id="container">
+        <div id="content">
+          <form [formGroup] = "requestTicket" method="get">
+            <label for="lb_licencePlate">Targa</label><br>
+            <select [(ngModel)]="lpSelected" formControlName="licencePlate" id="itemSelect" (click)="getBoatList()">
+              <option *ngFor="let response of rispostaBeBoat" [value]="response">{{response}}</option>
+            </select>
+            <label for="lb_licencePlate">Tipo Richiesta</label><br>
+            <select [(ngModel)]="TypeTicketSelected" formControlName="idTypeTicket" id="itemSelect" (click)="getTypeTicketList()">
+                <option *ngFor="let response of rispostaBeTicket" [value]="response.idTypeTicket">{{response.description}}</option>
+            </select>
+            <label for="lb_licencePlate">Ulteriori Informazioni</label><br>
+            <input type="text" formControlName="description" placeholder="Ulteriori informazioni">
+            <label for="lb_datetime">Data Richiesta</label><br>
+                <input type="date"  formControlName="date" id="date" placeholder="Data Richiesta" required><br>
+              <button type="button" (click)="goBack()">INDIETRO</button>
+              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
+              <div>{{rispostaBeRichiesta}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  
+          </form>
+          </div>
+    </div>
+</body>
+</html>

@@ -34,14 +34,15 @@ export class InserimentoImbarcazioneComponent {
 
    }
 
-
    submit() {
     return this.gestisciImbarcazioneService.registerBoat(this.boatRegistration.value).subscribe({ 
       next: (rispostaBeSubmit) => {
         this.rispostaBeSubmit = rispostaBeSubmit.response;
+        alert(this.rispostaBeSubmit);
       },
       error: (err) => {
-        this.err = err.response;
+        this.err = err.error;
+        alert(this.err);
       },
     });
  
@@ -50,8 +51,5 @@ export class InserimentoImbarcazioneComponent {
   goBack() {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
-
-
-
 
 }

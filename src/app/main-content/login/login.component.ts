@@ -34,15 +34,14 @@ export class LoginComponent implements OnInit {
 
 
   submit() {
-   
       this.gestisciUtenteService.loginUser(this.login.value).subscribe({
         next: (rispostaBeLogin) => {
+        this.router.navigateByUrl('home');
         this.rispostaBeLogin = rispostaBeLogin.response;
-        this.router.navigateByUrl("home");
+        
       },
       error: (err) => {
         this.err = err.error;
-        console.log(this.err);
       },
     });
 

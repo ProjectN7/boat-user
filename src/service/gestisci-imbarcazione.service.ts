@@ -23,6 +23,7 @@ export class GestioneImbarcazioneService {
   }
 
   modifyBoat(boat: any) {
+    console.log(this.baseUrl + '/modificaBoat/' + boat.licencePlate)
     return this.http.post<any>(this.baseUrl + '/modificaBoat/' + boat.licencePlate, boat);
   }
   
@@ -56,4 +57,16 @@ export class GestioneImbarcazioneService {
     return this.http.delete<any>(this.baseUrl + '/reservation/reservationDelete/' + licencePlate);
   }
 
+  getAllTypeTicket() {
+    return this.http.get<any>(this.baseUrl + '/ticket/getAllTypeTicket');
+    
+  }
+
+  SubmitTicketRequest(licencePlate: any) {
+    return this.http.post<any>(this.baseUrl + '/ticket/reservationTicket', licencePlate);
+  }
+  getTicketReservationByLp(licencePlate: any) {
+    return this.http.get<any>(this.baseUrl + '/ticket/reservationListLicencePlate?licencePlate=' + licencePlate);
+  }
+  
 }

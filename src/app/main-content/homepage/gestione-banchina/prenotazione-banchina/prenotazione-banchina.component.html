@@ -15,6 +15,10 @@
             <select [(ngModel)]="lpSelected" formControlName="licencePlate" id="itemSelect" (click)="getBoatList()">
               <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
             </select>
+            <label for="lb_datetime">Data Inizio Prenotazione</label><br>
+                <input type="date"  formControlName="dateTimeFrom" id="dateTimeTo" placeholder="Data Inizio Prenotazione" required><br>
+              <label for="lb_name">Data Fine Prenotazione</label><br>
+                <input type="date"  formControlName="dateTimeTo" id="dateTimeTo" placeholder="Data Fine Prenotazione" required><br>
             <label for="lb_pier">Molo</label><br>
             <select [(ngModel)]="pierSelected" formControlName="pier" id="itemSelect" (click)="getPierList()">
               <option *ngFor="let responsePier of rispostaBePier" [value]="responsePier">{{responsePier}}</option>
@@ -23,10 +27,6 @@
             <select [(ngModel)]="quaysideSelected" formControlName="quayside" id="itemSelect" (click)="getQuaysideByIdPier(pierSelected)">
               <option *ngFor="let response of rispostaBeQuaysideActive" [value]="response">{{response}}</option>
             </select>
-              <label for="lb_datetime">Data Inizio Prenotazione</label><br>
-                <input type="date"  formControlName="dateTimeFrom" id="dateTimeTo" placeholder="Data Inizio Prenotazione" required><br>
-              <label for="lb_name">Data Fine Prenotazione</label><br>
-                <input type="date"  formControlName="dateTimeTo" id="dateTimeTo" placeholder="Data Fine Prenotazione" required><br>
               <button type="button" (click)="goBack()">INDIETRO</button>
               <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
               <div>{{rispostaBeReservation}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  

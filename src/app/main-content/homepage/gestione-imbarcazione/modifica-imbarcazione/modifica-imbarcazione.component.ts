@@ -15,6 +15,7 @@ export class ModificaImbarcazioneComponent {
   valueSelected: any;
   err: any;
   rispostaBe: any;
+  rispostaBeBoat: any;
 
   boatModification: FormGroup;
 
@@ -39,12 +40,12 @@ export class ModificaImbarcazioneComponent {
    submit() {
     return this.gestisciImbarcazioneService.modifyBoat(this.boatModification.value).subscribe({ 
       next: (rispostaBe) => {
-        this.boatModification = rispostaBe.response;
-        window.location.reload();
+        this.rispostaBe = rispostaBe.response;
+        alert(this.rispostaBe);
+            window.location.reload();
       },
       error: (err) => {
-        this.err = this.err;
-        alert(this.err);
+        this.err = err.error;
       },
     });
   }
@@ -57,7 +58,7 @@ export class ModificaImbarcazioneComponent {
   getBoatList() {
     return this.gestisciImbarcazioneService.getAllBoat().subscribe({
       next: (rispostaBe) => {
-        this.rispostaBe = rispostaBe;
+        this.rispostaBeBoat = rispostaBe;
       },
       error: (err) => {
         console.log(err);

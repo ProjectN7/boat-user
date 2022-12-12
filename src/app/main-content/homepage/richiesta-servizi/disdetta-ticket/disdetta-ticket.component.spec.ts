@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PulizieComponent } from './pulizie.component';
+import { DisdettaTicketComponent } from './disdetta-ticket.component';
 
-describe('PulizieComponent', () => {
-  let component: PulizieComponent;
-  let fixture: ComponentFixture<PulizieComponent>;
+describe('DisdettaTicketComponent', () => {
+  let component: DisdettaTicketComponent;
+  let fixture: ComponentFixture<DisdettaTicketComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PulizieComponent ]
+      declarations: [ DisdettaTicketComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PulizieComponent);
+    fixture = TestBed.createComponent(DisdettaTicketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
