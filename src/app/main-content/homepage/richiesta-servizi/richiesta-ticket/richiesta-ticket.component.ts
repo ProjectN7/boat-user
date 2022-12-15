@@ -65,8 +65,9 @@ export class RichiestaTicketComponent {
 
 getTypeTicketList() {
   return this.gestisciImbarcazioneService.getAllTypeTicket().subscribe({
-    next: (rispostaBe) => {
-      this.rispostaBeTicket = rispostaBe;
+    next: (rispostaBeTicket) => {
+      this.rispostaBeTicket = rispostaBeTicket;
+      
     },
     error: (err) => {
       this.err = err.error

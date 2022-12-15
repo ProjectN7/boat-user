@@ -6,15 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent  {
 
   constructor(
     private router: Router
   ) { }
 
-  // primo metodo che viene eseguito al caricamento della pagina senza essere richiamato
-  ngOnInit() {
-  }
+
 
   exit() {
     this.router.navigateByUrl('login');

@@ -10,18 +10,21 @@
     <div class="title"><h1>DISDETTA BANCHINA</h1></div>
     <div id="container">
         <div id="content">
-          <form>
+          <form> 
             <label for="lb_licencePlate">Targa</label><br>
             <select [(ngModel)]="lpSelected" name="licencePlate" id="itemSelect" (click)="getBoatList()">
               <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
             </select>
-            <label for="lb_pier">Prenotazioni</label><br>
+            <label for="lb_reservations">Prenotazioni</label><br>
             <select [(ngModel)]="reservationSelected" name="reservations" id="itemSelect" (click)="getReservationByLp(lpSelected)">
-              <option *ngFor="let response of rispostaBeTicket" [value]="response">{{response}}</option>
+              <option [value]="rispostaBeTicket">
+                Tipo Prenotazione: {{rispostaBeTicket.idTypeTicket}}
+                Data Prenotazione: {{rispostaBeTicket.date}}
+              </option>
             </select>
               <button type="button" (click)="goBack()">INDIETRO</button>
-              <button type="button" id="btn2" (click)="submit(lpSelected)">INVIA</button><br><br>
-              <div>{{rispostaBeReservation}}{{err}}{{rispostaBeSubmit}}</div>
+              <button type="button" id="btn2" (click)="submit(rispostaBeTicket.idTicket)">INVIA</button><br><br>
+              <div>{{rispostaBeReservation}}{{err}}</div>
           </form>
           </div>
     </div>

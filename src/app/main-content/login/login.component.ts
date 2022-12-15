@@ -2,49 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GestisciUtenteService } from 'src/service/gestisci-utente-service';
+import { UserLogin } from './UserLogin';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   // creazione del form da utilizzare per i campi di input
   login: FormGroup;
   err: any;
   rispostaBeLogin: any;
-  email: any
-  password: any;
+  type: string = "password";
+  isText: boolean = false;
+  eyeIcon: string = "fa-eye-slash";
+  model = new UserLogin("","");
+  submitted = false;
+  emailPattern = "[a-zA-Z]*"; 
 
   constructor(
     private router: Router,
-    private gestisciUtenteService: GestisciUtenteService
+    private gestisciUtenteService: GestisciUtenteService,
   ) {
     // assegnazione dei campi al form, che verranno poi richiamati nell'input con l'attributo formControlName
     this.login = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
+    
    }
 
-  ngOnInit() {
-  }
-
-
   submit() {
-      this.gestisciUtenteService.loginUser(this.login.value).subscribe({
-        next: (rispostaBeLogin) => {
-        this.router.navigateByUrl('home');
-        this.rispostaBeLogin = rispostaBeLogin.response;
-        
-      },
-      error: (err) => {
-        this.err = err.error;
-      },
-    });
-
+    if(this.login.invalid) {
+      return;
+    }
+    this.router.navigate(['home']);
 
   }
 
@@ -52,4 +48,12 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('registration');
   }
 
+  hideShowPass() {
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
+    this.isText ? this.type = "text" : this.type = "password";
+  }
+
+
+  onSubmit() { this.submitted = true; }
 }

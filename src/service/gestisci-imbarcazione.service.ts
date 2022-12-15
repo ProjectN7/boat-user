@@ -54,17 +54,22 @@ export class GestioneImbarcazioneService {
   }
 
   deleteReservation(licencePlate: any) {
-    return this.http.delete<any>(this.baseUrl + '/reservation/reservationDelete/' + licencePlate);
+    return this.http.get<any>(this.baseUrl + '/reservation/reservationDelete/' + licencePlate);
+  }
+
+  deleteTicketReservation(idTicket: any) {
+    return this.http.get<any>(this.baseUrl + '/ticket/deleteTicketById?idTicket=' + idTicket);
   }
 
   getAllTypeTicket() {
-    return this.http.get<any>(this.baseUrl + '/ticket/getAllTypeTicket');
+    return this.http.get<any>(this.baseUrl + '/ticket/getAllTypeTicket',);
     
   }
 
   SubmitTicketRequest(licencePlate: any) {
     return this.http.post<any>(this.baseUrl + '/ticket/reservationTicket', licencePlate);
   }
+  
   getTicketReservationByLp(licencePlate: any) {
     return this.http.get<any>(this.baseUrl + '/ticket/reservationListLicencePlate?licencePlate=' + licencePlate);
   }

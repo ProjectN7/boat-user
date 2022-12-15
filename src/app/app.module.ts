@@ -40,17 +40,17 @@ import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servi
     GestioneBanchinaComponent,
     RichiestaTicketComponent,
     DisdettaTicketComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
     
+
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

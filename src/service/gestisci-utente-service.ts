@@ -21,7 +21,6 @@ export class GestisciUtenteService {
   }
 
   loginUser(userLogin: any) {
-    console.log(userLogin);
     return this.http.post<any>(this.baseUrl + 'user/userLogin', userLogin);
   }
   

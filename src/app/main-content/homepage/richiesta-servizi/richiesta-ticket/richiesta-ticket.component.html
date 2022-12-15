@@ -25,7 +25,8 @@
                 <input type="date"  formControlName="date" id="date" placeholder="Data Richiesta" required><br>
               <button type="button" (click)="goBack()">INDIETRO</button>
               <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
-              <div>{{rispostaBeRichiesta}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  
+              <div>{{rispostaBeRichiesta}}</div>
+             
           </form>
           </div>
     </div>

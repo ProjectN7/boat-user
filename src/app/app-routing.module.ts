@@ -20,9 +20,9 @@ import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servi
 
 const routes: Routes = [
 { path: "", pathMatch: "full", redirectTo: "login" },
-{ path: "home", component: HomepageComponent },
-{ path: "registration", component: RegistrationComponent },
-{ path: "login", component: LoginComponent },
+{ path: "home", component: HomepageComponent, },
+{ path: "registration", component: RegistrationComponent, },
+{ path: "login", component: LoginComponent, },
 
 { path: "home/gestione-imbarcazione", component: GestioneImbarcazioneComponent},
 { path: "home/gestione-banchina", component: GestioneBanchinaComponent},

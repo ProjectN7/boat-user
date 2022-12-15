@@ -1,11 +1,10 @@
-import { UrlSegmentGroup } from "@angular/router";
 
 export class User {
     name: string;
     surname: string;
     date_of_birth: string;
     gender: string;
-    nationality!: string;
+    nationality: string;
     cf: string;
     address: string;
     postal_code: string;

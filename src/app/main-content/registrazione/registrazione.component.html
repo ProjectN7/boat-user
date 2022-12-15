@@ -201,7 +201,7 @@
             <input type="checkbox"  formControlName="acceptance" class="widthauto" id="acceptance">
             <label for="lb_acceptance" class="widthauto">Accettazione informativa sul trattamento dei dati personali (ART. 13 D.LGS. 196/2003) e Regolamento UE 2016/679</label><br><br>
             <button type="button" (click)="submit()">REGISTRATI</button><br><br>
-            <label for="lb_registration">Hai già  un account? <button><strong (click)="goToLoginPage()">Login</strong></button></label><br>
+            <label for="lb_registration">Hai già  un account? <button routerLink="/login"><strong>Login</strong></button></label><br>
             <div>{{rispostaBe}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  
         </form>
         </div>

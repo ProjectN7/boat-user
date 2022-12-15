@@ -1,22 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
-    background-color: lightblue;
+    background-image: url('./bg4.jpg');
+    background-size: cover;
 
-}
-
-.title {
-    padding: 10px 0px;
-}
-
-.title h1 {
-    font-weight: 100;
-    font-style: italic;
-    text-align: center;
 }
 
 .nationality {
@@ -28,35 +19,20 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-
 }
 
 #content {
-    margin-bottom: 50px;
-    padding: 50px;
-    width: 50%;
-    border-radius: 10px;
     box-shadow: 10px 10px 1px rgb(42, 96, 166, 0.2);
     border: 1px solid rgb(42, 96, 166, 0.2);
     background-color: #F7F7F7;
-    transition: 0.5s;
 }
+
 
 #content:hover {
     box-shadow: 10px 10px 1px rgb(42, 96, 166);
     border: 1px solid rgb(42, 96, 166);
 }
 
-
-input {
-    padding: 10px;
-    margin: 10px 0px;
-    width: 100%;
-}
-
-input::after {
-    border-color: #5CC36A;
-}
 
 button{
     padding: 10px 30px;
@@ -68,9 +44,7 @@ button{
 
 button:hover {
     background-color: rgb(42, 96, 166);
-    border: 1px solid rgb(42, 96, 166);
     color: #FFF;
-
 }
 
 #gender {
@@ -82,3 +56,11 @@ button:hover {
     width: auto;
 }
 
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }

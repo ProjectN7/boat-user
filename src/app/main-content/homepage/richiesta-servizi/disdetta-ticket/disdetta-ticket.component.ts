@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.service';
+import { Ticket } from '../Ticket';
+
 
 @Component({
   selector: 'app-disdetta-ticket',
@@ -9,8 +11,6 @@ import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.s
   styleUrls: ['./disdetta-ticket.component.scss']
 })
 export class DisdettaTicketComponent {
-
-  UpdateTicketForm: FormGroup;
   rispostaBeReservation: any;
   rispostaBeReservationQuayside: any;
   rispostaBeLp: any;
@@ -18,22 +18,16 @@ export class DisdettaTicketComponent {
   lpSelected: any;
   err: any;
   rispostaBeSubmit: any;
-  rispostaBeTicket: any;
+  rispostaBeTicket: Ticket;
+  idTypeTicket: any;
 
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
 
-  ) {
-    this.UpdateTicketForm = new FormGroup({
-      licencePlate: new FormControl('', Validators.required),
-      pier: new FormControl('', Validators.required),
-      quayside: new FormControl('', Validators.required),
-      dateTimeFrom: new FormControl('', Validators.required),
-      dateTimeTo: new FormControl('', Validators.required),
-
-    })
-   }
+  ) { 
+    this.rispostaBeTicket = new Ticket();
+  }
 
   goToPage(urlpagina: any) {
     return this.router.navigateByUrl(urlpagina);
@@ -43,11 +37,13 @@ export class DisdettaTicketComponent {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
-  submit(licencePlate: any) {
-    return this.gestisciImbarcazioneService.deleteReservation(licencePlate).subscribe({ 
+  submit(Ticket: any) {
+    return this.gestisciImbarcazioneService.deleteTicketReservation(Ticket).subscribe({ 
       next: (rispostaBeSubmit) => {
         console.log(rispostaBeSubmit);
         this.rispostaBeSubmit = rispostaBeSubmit.response;
+        alert(this.rispostaBeSubmit);
+        window.location.reload();
         
       },
       error: (err) => {
@@ -71,11 +67,20 @@ getReservationByLp(licencePlate: any) {
   return this.gestisciImbarcazioneService.getTicketReservationByLp(licencePlate).subscribe({
     next: (rispostaBe) => {
       this.rispostaBeTicket = rispostaBe;
+      console.log(this.rispostaBeTicket)
+      if (this.rispostaBeTicket.idTypeTicket = "1") {
+        this.rispostaBeTicket.idTypeTicket = "RIFORNIMENTO";
+      } else if (this.rispostaBeTicket.idTypeTicket = "2") {
+        this.rispostaBeTicket.idTypeTicket = "PULIZIA"
+      } else {
+        this.rispostaBeTicket.idTypeTicket = "MANUTENZIONE";
+      }
     },
     error: (err) => {
       this.err = err.error;
     }
 });
 }
+
 
 }

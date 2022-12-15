@@ -19,8 +19,7 @@ export class InserimentoImbarcazioneComponent {
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
-  ) {
-    
+  ) {    
     this.boatRegistration = new FormGroup({
       licencePlate: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
