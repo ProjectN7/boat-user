@@ -2,30 +2,30 @@
 export class User {
     name: string;
     surname: string;
-    date_of_birth: string;
+    dateOfBirth: string;
     gender: string;
     nationality: string;
     cf: string;
     address: string;
-    postal_code: string;
-    phone_number: string;
+    postalCode: string;
+    phoneNumber: string;
     email: string;
     password: string;
-    boat_licence: string;
+    boatLicence: string;
 
     constructor() {
         this.name = "";
         this.surname = "";
-        this.date_of_birth = "";
+        this.dateOfBirth = "";
         this.gender = "";
         this.nationality = "";
         this.cf = "";
         this.address = "";
-        this.postal_code = "";
-        this.phone_number = "";
+        this.postalCode = "";
+        this.phoneNumber = "";
         this.email = "";
         this.password = "";
-        this.boat_licence = "";
+        this.boatLicence = "";
     }
 
 }
