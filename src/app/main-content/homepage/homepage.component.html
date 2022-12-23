@@ -6,14 +6,15 @@
     <title>Homepage</title>
 </head>
 <body>
-    <div class="title"><h1>Benvenuto!</h1></div><br>
+    
     <div id="container">
         <div id="content">
-            <button type="button" (click)="goToPage('home/gestione-profilo')">GESTIONE PROFILO</button><br>
-            <button type="button" (click)="goToPage('home/gestione-imbarcazione')">GESTIONE IMBARCAZIONE</button><br>
-            <button type="button" (click)="goToPage('home/gestione-banchina')">GESTIONE BANCHINA</button><br>
-            <button type="button" (click)="goToPage('home/richiesta-servizi')">RICHIESTA SERVIZI</button><br>
-            <button type="button" (click)="exit()">ESCI</button><br>
+            <div class="title"><h2><span>Benvenuto!</span></h2></div><br>
+            <button class="form-control" type="button" (click)="goToPage('home/gestione-profilo')">GESTIONE PROFILO</button><br>
+            <button class="form-control" type="button" (click)="goToPage('home/gestione-imbarcazione')">GESTIONE IMBARCAZIONE</button><br>
+            <button class="form-control" type="button" (click)="goToPage('home/gestione-banchina')">GESTIONE BANCHINA</button><br>
+            <button class="form-control" type="button" (click)="goToPage('home/richiesta-servizi')">RICHIESTA SERVIZI</button><br>
+            <button class="form-control" type="button" (click)="exit()">ESCI</button><br>
         </div>
     </div>
 </body>

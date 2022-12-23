@@ -19,7 +19,7 @@ import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servi
 
 
 const routes: Routes = [
-{ path: "", pathMatch: "full", redirectTo: "login" },
+{ path: "", pathMatch: "full", redirectTo: "/login" },
 { path: "home", component: HomepageComponent, },
 { path: "registration", component: RegistrationComponent, },
 { path: "login", component: LoginComponent, },
@@ -45,7 +45,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

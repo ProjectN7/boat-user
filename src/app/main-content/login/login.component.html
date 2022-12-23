@@ -10,33 +10,32 @@
   <body>
       <div id="container">
         <div id="content" [hidden]="submitted">
-        <div class="title"><h1>Login</h1></div>
-        <form #userLogin="ngForm">
-          <label for="name">Email</label>
-          <input type="text" class="form-control" id="name"
-          required
-          [(ngModel)]="model.email" name="email" #email="ngModel" placeholder="Email">
-          <div [hidden]="email.valid || email.pristine"
-             class="alert alert-danger">
-                L'email è obbligatoria
-          </div><br>
-          <label for="name">Password</label>
-          <input type="password" class="form-control" id="name"
-          required
-          [(ngModel)]="model.password" name="password" #pass="ngModel" placeholder="Password">
-          <div *ngIf="pass.errors?.['pattern']">
-            User name not valid.
-          </div> 
-          <div [hidden]="pass.valid || pass.pristine"
-             class="alert alert-danger">
-                La Password non è valida
+        <div><h2 class="title">Login</h2></div>
+        <form [formGroup]="login">
+          <div>
+            <div>
+              <label for="lb_email">Email</label>
+              <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+              <div 
+              [hidden]="login.controls['email'].valid || (login.controls['email'].pristine && !submitted)"
+              class="alert alert-danger">
+                L'email non è valida
+              </div><br>
+            </div>
           </div>
-          
-          <br><br>
+          <div>
+            <div>
+              <label for="lb_email">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
+              <div [hidden]="login.controls['password'].valid || login.controls['password'].pristine"  class="alert alert-danger">
+                La password non è valida
+              </div><br>
+            </div>
+          </div>
+          <a href="password_dimenticata.html">Password dimenticata?</a><br><br>
           <span (click)="hideShowPass()" class="fa {eyeIcon}"></span>
-          <button type="button" value="submit" (click)="submit()" class="form-control">INVIA</button><br>
+          <button type="button" value="submit" [disabled]="(!login.valid)" (click)="userLogin(login.value)" class="form-control">INVIA</button><br>
           <label for="lb_registrati">Non hai un account? <a href="registration" routerLink="/registration">Registrati</a></label><br>
-          <a href="password_dimenticata.html">Password dimenticata?</a>
           <div>{{rispostaBeLogin}}</div>
         </form>
         </div>

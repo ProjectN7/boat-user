@@ -43,9 +43,12 @@ export class RichiestaTicketComponent {
     return this.gestisciImbarcazioneService.SubmitTicketRequest(this.requestTicket.value).subscribe({ 
       next: (rispostaBe) => {
         this.rispostaBeRichiesta = rispostaBe.response;
+        alert(this.rispostaBeRichiesta)
+        window.location.reload();
       },
       error: (err) => {
-          this.err = err.error;
+          this.err = err.error.message;
+          alert(this.err)
       },
     });
   }
@@ -54,7 +57,7 @@ export class RichiestaTicketComponent {
   getBoatList() {
     return this.gestisciImbarcazioneService.getAllBoat().subscribe({
       next: (rispostaBe) => {
-        this.rispostaBeBoat = rispostaBe;
+        this.rispostaBeBoat = rispostaBe.response;
       },
       error: (err) => {
         this.err = err.error;
@@ -66,7 +69,7 @@ export class RichiestaTicketComponent {
 getTypeTicketList() {
   return this.gestisciImbarcazioneService.getAllTypeTicket().subscribe({
     next: (rispostaBeTicket) => {
-      this.rispostaBeTicket = rispostaBeTicket;
+      this.rispostaBeTicket = rispostaBeTicket.response;
       
     },
     error: (err) => {

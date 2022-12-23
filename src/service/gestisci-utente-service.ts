@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, resolveForwardRef } from '@angular/core';
-import { UrlSegmentGroup } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Injectable, } from '@angular/core';
 import { User } from 'src/app/main-content/registrazione/users/user';
 /*********  Per creare un service scrivi nella console  ng g s nome-service   ************* */
 
@@ -16,17 +14,19 @@ export class GestisciUtenteService {
   constructor( private http: HttpClient ) { }
 
 
-  registerUser(userRegistration: any) {
-    return this.http.post<any>(this.baseUrl + '/userSave', userRegistration);
+  registerUser(userModification: any) {
+    return this.http.post<any>(this.baseUrl + '/userSave', userModification);
   }
 
   loginUser(userLogin: any) {
-    return this.http.post<any>(this.baseUrl + 'user/userLogin', userLogin);
-  }
-  
-
-  user_list(newUser: User) {
-    return this.baseUrl + '/userList', {"user": newUser}
+    return this.http.post<any>(this.baseUrl + "/authenticate", userLogin);
   }
 
+  modifyUser(user: any) {
+    return this.http.post<any>(this.baseUrl + '/modificaUser/'+ user.cf, user);
+  }
+
+  getUserDataService(email: any) {
+    return this.http.get<any>(this.baseUrl + "/getUserByEmail?email=" + email)
+  }
 }

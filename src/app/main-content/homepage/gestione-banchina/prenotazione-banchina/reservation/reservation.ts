@@ -5,6 +5,7 @@ export class Boat {
     quayside: string;
     dateTimeFrom: string;
     dateTimeTo: string;
+    idReservation: number;
 
     constructor() {
         this.licencePlate = "";
@@ -12,6 +13,7 @@ export class Boat {
         this.quayside = "";
         this.dateTimeFrom = "";
         this.dateTimeTo = "";
+        this.idReservation = 0;
     }
 
 }

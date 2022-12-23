@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +20,7 @@ import { RichiestaServiziComponent } from './main-content/homepage/richiesta-ser
 import { GestioneBanchinaComponent } from './main-content/homepage/gestione-banchina/gestione-banchina.component';
 import { RichiestaTicketComponent } from './main-content/homepage/richiesta-servizi/richiesta-ticket/richiesta-ticket.component';
 import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servizi/disdetta-ticket/disdetta-ticket.component';
+import { TokenInterceptorService } from 'src/service/token-interceptor.service';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servi
 
 
   ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

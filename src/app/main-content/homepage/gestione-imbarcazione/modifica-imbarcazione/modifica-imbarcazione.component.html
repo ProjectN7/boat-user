@@ -7,30 +7,73 @@
     
 </head>
 <body>
-    <div class="title"><h1>Modifica Imbarcazione</h1></div>
     <div id="container">
         <div id="content">
+          <div class="title"><h1>Modifica Imbarcazione</h1></div>
           <form [formGroup] = "boatModification">
             <label for="lb_name">Targa</label><br>
-            <select [(ngModel)]="valueSelected" formControlName="licencePlate" id="boatSelect" (click)="getBoatList()" (change)="getSingleBoat(valueSelected)">
+            <select [(ngModel)]="valueSelected" class="form-control" formControlName="licencePlate" id="boatSelect" (click)="getBoatList()" (change)="getSingleBoat(valueSelected)" required>
               <option *ngFor="let response of rispostaBeBoat" [value]="response">{{response}}</option>
-            </select>
-            <label for="lb_name">Codice Fiscale</label><br>
-                <input type="text" formControlName="cf" id="Targa" placeholder="Codice Fiscale" required [value]=""><br>
-              <label for="lb_name">Nome</label><br>
-                <input type="text" formControlName="name" id="name" placeholder="Nome"><br>
-              <label for="lb_name">Colore</label><br>
-                <input type="text"  formControlName="colour" id="colour" placeholder="Colore" required><br>
-              <label for="lb_name">Licenza di Navigazione</label><br>
-                <input type="text"  formControlName="navigationLicence" id="navigation_licence" placeholder="Licenza di Navigazione" required><br>
-              <label for="lb_name">Dichiarazione di Potenza</label><br>
-                <input type="text"  formControlName="power" id="power" placeholder="Potenza" required><br>
-              <label for="lb_name">Dichiarazione di Conformità</label><br>
-                <input type="text"  formControlName="declarationOfConformity" id="declaration_of_conformity" placeholder="Dichiarazione di conformità" required><br>
-              <label for="lb_name">RCA</label><br>
-                <input type="text"  formControlName="rca" id="rca" placeholder="Rca" required><br>
-              <button type="button" (click)="goBack()">INDIETRO</button>
-              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
+            </select><br>
+            <div>
+              <div>
+                <label for="lb_cf">Codice Fiscale</label><br>
+                <input type="text" class="form-control"  id="cf" formControlName="cf" placeholder="Codice Fiscale" maxlength="16" pattern="[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]" required>
+                <div [hidden]="boatModification.controls['cf'].valid || (boatModification.controls['cf'].pristine && !submitted)" class="alert alert-danger">
+                  Codice fiscale non valido (esempio cf: AGGCVD23B02E123C)
+                </div><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">Nome</label><br>
+                <input type="text"  class="form-control" id="name" formControlName="name" placeholder="Nome"  maxlength="20"><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">Colore</label><br>
+                <input type="text"  class="form-control" id="colour" formControlName="colour" placeholder="Colore" maxlength="10"><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">Licenza di Navigazione</label><br>
+                <input type="text" class="form-control" id="navigation_licence" formControlName="navigationLicence" placeholder="Licenza di Navigazione" pattern="^[A-Z]{2}-[0-9]{4}$" maxlength="7" required>
+                <div [hidden]="boatModification.controls['navigationLicence'].valid || (boatModification.controls['navigationLicence'].pristine && !submitted)" class="alert alert-danger">
+                  Licenza di navigazione non valida (esempio: CF-1234)
+                </div><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">Dichiarazione di Potenza</label><br>
+                <input type="text"   class="form-control" id="power" placeholder="Potenza" formControlName="power" maxlength="4" pattern="[0-9]*" required>
+                <div [hidden]="boatModification.controls['power'].valid || (boatModification.controls['power'].pristine && !submitted)" class="alert alert-danger">
+                  Dichiarazione di potenza non valida
+                </div><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">Dichiarazione di Conformità</label><br>
+                <input type="text"   class="form-control" id="declaration_of_conformity" formControlName="declarationOfConformity" placeholder="Dichiarazione di conformità" maxlength="10" pattern="^[A-Z]{6}-[0-9]{3}$" required>
+                <div [hidden]="boatModification.controls['declarationOfConformity'].valid || (boatModification.controls['declarationOfConformity'].pristine && !submitted)" class="alert alert-danger">
+                  Dichiarazione di confomità non valida (esempio: QWERTY-123)
+                </div><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_name">RCA</label><br>
+                <input type="text"  class="form-control" id="rca" placeholder="Rca" formControlName="rca" maxlength="6" pattern="^[A-Z]{2}-[0-9]{3}$" required>
+                <div [hidden]="boatModification.controls['rca'].valid || (boatModification.controls['rca'].pristine && !submitted)" class="alert alert-danger">
+                  RCA non valida (esempio: FG-150)
+                </div><br>
+              </div>
+            </div>
+            <button type="button" (click)="goBack()">INDIETRO</button>
+            <button type="button" value="submit" [disabled]="(!boatModification.valid)" (click)="submit()" class="form-control">INVIA</button><br>
           </form>
           </div>
     </div>

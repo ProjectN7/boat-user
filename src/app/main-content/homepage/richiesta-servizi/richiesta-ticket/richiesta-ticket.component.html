@@ -7,25 +7,40 @@
     
 </head>
 <body>
-    <div class="title"><h1>RICHIESTA TICKET</h1></div>
     <div id="container">
         <div id="content">
-          <form [formGroup] = "requestTicket" method="get">
-            <label for="lb_licencePlate">Targa</label><br>
-            <select [(ngModel)]="lpSelected" formControlName="licencePlate" id="itemSelect" (click)="getBoatList()">
-              <option *ngFor="let response of rispostaBeBoat" [value]="response">{{response}}</option>
-            </select>
-            <label for="lb_licencePlate">Tipo Richiesta</label><br>
-            <select [(ngModel)]="TypeTicketSelected" formControlName="idTypeTicket" id="itemSelect" (click)="getTypeTicketList()">
-                <option *ngFor="let response of rispostaBeTicket" [value]="response.idTypeTicket">{{response.description}}</option>
-            </select>
-            <label for="lb_licencePlate">Ulteriori Informazioni</label><br>
-            <input type="text" formControlName="description" placeholder="Ulteriori informazioni">
-            <label for="lb_datetime">Data Richiesta</label><br>
-                <input type="date"  formControlName="date" id="date" placeholder="Data Richiesta" required><br>
-              <button type="button" (click)="goBack()">INDIETRO</button>
-              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
-              <div>{{rispostaBeRichiesta}}</div>
+          <div class="title"><h1>Richiesta Ticket</h1></div>
+          <form [formGroup] = "requestTicket">
+            <div>
+              <div>
+                <label for="lb_licencePlate">Targa</label><br>
+                <select [(ngModel)]="lpSelected" class="form-control" formControlName="licencePlate" id="itemSelect" (click)="getBoatList()" required>
+                  <option *ngFor="let response of rispostaBeBoat" [value]="response">{{response}}</option>
+                </select><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_licencePlate">Tipo Richiesta</label><br>
+                <select [(ngModel)]="TypeTicketSelected" class="form-control" formControlName="idTypeTicket" id="itemSelect" (click)="getTypeTicketList()" required>
+                    <option *ngFor="let response of rispostaBeTicket" [value]="response.idTypeTicket">{{response.description}}</option>
+                </select><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_licencePlate">Ulteriori Informazioni</label><br>
+                <input type="text" class="form-control" formControlName="description" placeholder="Ulteriori informazioni" required><br>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="lb_datetime">Data Richiesta</label><br>
+                <input type="date" class="form-control" formControlName="date" id="date" placeholder="Data Richiesta" required><br>
+              </div>
+            </div>
+              <button type="button" class="form-control" (click)="goBack()">INDIETRO</button>
+              <button type="button" class="form-control" id="btn2" value="submit" [disabled]="(!requestTicket.valid)" (click)="submit()">INVIA</button><br><br>
              
           </form>
           </div>

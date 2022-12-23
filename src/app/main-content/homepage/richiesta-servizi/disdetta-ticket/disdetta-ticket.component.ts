@@ -20,6 +20,8 @@ export class DisdettaTicketComponent {
   rispostaBeSubmit: any;
   rispostaBeTicket: Ticket;
   idTypeTicket: any;
+  rispostaBeDate: any;
+  rispostaBeTicket1: any;
 
   constructor(
     private router: Router,
@@ -51,23 +53,27 @@ export class DisdettaTicketComponent {
       },
     });
   }
-  getBoatList() {
-    return this.gestisciImbarcazioneService.getAllBoat().subscribe({
-      next: (rispostaBeLp) => {
-        this.rispostaBeLp = rispostaBeLp;
+
+
+  getAllLicencePlateActive() {
+    return this.gestisciImbarcazioneService.getLicencePlateActiveTicketService().subscribe({
+      next: (rispostaBeBoat) => {
+        this.rispostaBeLp = rispostaBeBoat.response;
       },
       error: (err) => {
-        console.log(err);
+        this.err = err.error.response;
+        alert(this.err)
       }
   });
-
-}
+  
+  }
 
 getReservationByLp(licencePlate: any) {
   return this.gestisciImbarcazioneService.getTicketReservationByLp(licencePlate).subscribe({
     next: (rispostaBe) => {
       this.rispostaBeTicket = rispostaBe;
-      console.log(this.rispostaBeTicket)
+      this.rispostaBeDate = rispostaBe.response.date;
+      this.rispostaBeTicket1 = rispostaBe.response.idTicket;
       if (this.rispostaBeTicket.idTypeTicket = "1") {
         this.rispostaBeTicket.idTypeTicket = "RIFORNIMENTO";
       } else if (this.rispostaBeTicket.idTypeTicket = "2") {

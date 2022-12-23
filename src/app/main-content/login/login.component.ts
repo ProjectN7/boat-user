@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -37,6 +38,7 @@ export class LoginComponent {
    }
 
   submit() {
+    console.log(this.login.value)
     if(this.login.invalid) {
       return;
     }
@@ -54,6 +56,18 @@ export class LoginComponent {
     this.isText ? this.type = "text" : this.type = "password";
   }
 
-
   onSubmit() { this.submitted = true; }
+
+  userLogin(data: any) {
+    this.gestisciUtenteService.loginUser(data).subscribe((result:  any)=> {
+      console.warn(result)
+      localStorage.setItem("token",result.token)
+      this.router.navigateByUrl('/home')
+    })
+  }
+
+  userProfile() {
+    let headers = new HttpHeaders()
+    .set("Autorization",`Bearer ${localStorage.getItem('token')}`)
+  }
 }

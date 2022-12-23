@@ -1,4 +1,45 @@
-#gender {
-    padding: 10px;
-    margin: 10px 0px;
+
+p {
+    text-decoration: underline;
+}
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none ;
+}
+
+#content {
+    margin-top: 50px;
+    transition: 0.5s;
+    padding: 50px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+input {
+    padding: 2em;
+}
+
+
+.title {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+button{ 
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #e2e2e2;
+    transition: 0.2s;
+    border-radius: 5px;
+    height: 3em;
+}
+
+button:hover {
+    color: #fff;
+    background-color: rgb(8, 91, 206);
+}
+select {
+    height: 4em;
 }

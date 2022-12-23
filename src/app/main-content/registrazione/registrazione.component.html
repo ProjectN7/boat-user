@@ -6,26 +6,48 @@
     <title>Registrati</title>
 </head>
 <body>
-  <div class="title"><h1>Registrazione</h1></div>
     <div id="container">
         <div id="content">
-        <form [formGroup] = "registration">
-          <label for="lb_name">Nome</label><br>
-            <input type="text" formControlName="name" id="name" placeholder="Nome" required><br>
-          <label for="lb_name">Cognome</label><br>
-            <input type="text"  formControlName="surname" id="surname" placeholder="Cognome" required><br>
-          <label for="lb_date">Data di nascita</label><br>
-            <input type="date" class="widthauto" formControlName="date_of_birth" id="date" placeholder="data di nascita"><br>
-            <label for="gender">Sesso </label><br>
-            <select formControlName="gender" id="gender">
+          <h1 class="title">Registrazione</h1>
+        <form [formGroup]="registration">
+          <div>
+            <div>
+              <label for="lb_name">Nome</label>
+              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome" pattern="[a-zA-Z]*" required>
+              <div [hidden]="registration.controls['name'].valid || registration.controls['name'].pristine" class="alert alert-danger">
+                Il Nome non è valido
+              </div><br>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="lb_name">Cognome</label>
+              <input type="text" class="form-control" formControlName="surname" id="surname" placeholder="Cognome" pattern="[a-zA-Z]*" required>
+              <div [hidden]="registration.controls['surname'].valid || registration.controls['surname'].pristine"  class="alert alert-danger">
+                Il Cognome non è valido
+              </div><br>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="lb_date">Data di nascita</label><br>
+              <input type="date" class="form-control" formControlName="dateOfBirth" id="date" placeholder="data di nascita" required><br>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="gender">Sesso</label><br>
+            <select class="form-control" formControlName="gender">
               <option selected>Seleziona</option>
               <option value="m">Uomo</option>
               <option value="f">Donna</option>
               <option value="o">Preferisco non specificare</option>
             </select><br>
+            </div>
+          </div>            
           <label for="nationality">Nazionalità </label> <br>
-                  <select  formControlName="nationality" class="nationality">
-                    <option value="SELEZIONA">SELEZIONA</option>  
+                  <select  formControlName="nationality" class="nationality" class="form-control" required>
+                    <option selected>Seleziona</option>  
                     <option value="AFGHAN">AFGANO</option>
                     <option value="ALBANIAN">ALBANESE</option>
                     <option value="ALGERIAN">ALGERINO</option>
@@ -184,25 +206,72 @@
                     <option value="ZAMBIAN">ZAMBESE</option>
                     <option value="ZIMBABWEAN">ZIMBABWESE</option>
                 </select><br>
-          <label for="lb_cf">Codice Fiscale</label><br>
-          <input type="text"  formControlName="cf" id="cf" placeholder="Codice Fiscale"  required><br>
-          <label for="lb_address">Indirizzo</label><br>
-          <input type="text"  formControlName="address" id="address" placeholder="Indirizzo - Civico"  required><br>
-          <label for="lb_cap">Cap</label><br>
-          <input type="text"  formControlName="postal_code" id="cap"  placeholder="Cap"><br>
-          <label for="lb_phone_number">Telefono</label><br>
-          <input type="tel"  formControlName="phone_number" id="phone_number" value="+39"  pattern="[0-9]{10}" required><br>
-            <label for="lb_email">Email</label><br>
-          <input type="email"  formControlName="email" id="email" placeholder="Email"  required><br>
-            <label for="lb_password">Password</label><br>
-            <input type="password"  formControlName="password" id="password" placeholder="Password" required><br>
-            <label for="lb_boat_licence">Patente Nautica</label><br>
-            <input type="text"  formControlName="boat_licence" id="boat_licence" placeholder="Patente Nautica" required><br>
-            <input type="checkbox"  formControlName="acceptance" class="widthauto" id="acceptance">
+                <div>
+                  <div>
+                    <label for="lb_cf">Codice Fiscale</label><br>
+                    <input type="text" class="form-control"  id="cf" formControlName="cf" placeholder="Codice Fiscale" maxlength="16" pattern="[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]" required>
+                    <div [hidden]="registration.controls['cf'].valid || (registration.controls['cf'].pristine && !submitted)" class="alert alert-danger">
+                      Codice fiscale non valido (esempio cf: AGGCVD23B02E123C)
+                    </div><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_address">Indirizzo</label><br>
+                    <input type="text" class="form-control" formControlName="address" id="address" placeholder="Indirizzo - Civico" maxlength="50" required><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_cap">Cap</label>
+                    <input type="text" class="form-control" formControlName="postalCode" id="cap"  placeholder="Cap" pattern="[0-9]{5}" maxlength="5" required>
+                    <div [hidden]="registration.controls['postalCode'].valid || (registration.controls['postalCode'].pristine && !submitted)" class="alert alert-danger">
+                      CAP non valido (esempio: 70032)
+                    </div><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_phone_number">Telefono</label><br>
+                    <input type="tel" class="form-control" formControlName="phoneNumber" id="phoneNumber" value="+39"  placeholder="+39" pattern="[\+]?[0-9]{12}" maxlength="13" required>
+                    <div [hidden]="registration.controls['phoneNumber'].valid || (registration.controls['phoneNumber'].pristine && !submitted)" class="alert alert-danger">
+                      Numero non valido (esempio: +390000000000)
+                    </div><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_email">Email</label>
+                    <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+                    <div 
+                    [hidden]="registration.controls['email'].valid || (registration.controls['email'].pristine && !submitted)"
+                    class="alert alert-danger">
+                      L'email non è valida
+                    </div><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_email">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
+                    <div [hidden]="registration.controls['password'].valid || registration.controls['password'].pristine"  class="alert alert-danger">
+                      La password non è valida
+                    </div><br>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="lb_boat_licence">Patente Nautica</label><br>
+                    <input type="text" class="form-control" formControlName="boatLicence" id="boatLicence" placeholder="Patente Nautica" pattern="[A-Z]{2}[0-9]{6}" maxlength="8" required><br>
+                    <div [hidden]="registration.controls['boatLicence'].valid || registration.controls['boatLicence'].pristine"  class="alert alert-danger">
+                      La Patente Nautica non è valida (esempio: AA645656)
+                    </div>
+                  </div>
+                </div>
+            <input type="checkbox" class="form-control" class="widthauto" id="acceptance">
             <label for="lb_acceptance" class="widthauto">Accettazione informativa sul trattamento dei dati personali (ART. 13 D.LGS. 196/2003) e Regolamento UE 2016/679</label><br><br>
-            <button type="button" (click)="submit()">REGISTRATI</button><br><br>
-            <label for="lb_registration">Hai già  un account? <button routerLink="/login"><strong>Login</strong></button></label><br>
-            <div>{{rispostaBe}}</div><div *ngFor="let error of err" style="color: red;"><br>ATTENTIONE: {{error.message}}</div>  
+            <button type="button"  class="form-control" (click)="submit()" value="submit" [disabled]="(!registration.valid)" class="form-control">REGISTRATI</button><br>
+            <label for="lb_registrati">Hai già un account? <a href="login">Login</a></label><br>
         </form>
         </div>
       </div>

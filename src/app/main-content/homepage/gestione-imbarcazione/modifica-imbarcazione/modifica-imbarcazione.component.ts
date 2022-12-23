@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class ModificaImbarcazioneComponent {
   err: any;
   rispostaBe: any;
   rispostaBeBoat: any;
-
+  submitted = false;
   boatModification: FormGroup;
 
   constructor(
@@ -25,8 +26,8 @@ export class ModificaImbarcazioneComponent {
   ) {
     this.boatModification = new FormGroup({
       licencePlate: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      colour: new FormControl('', Validators.required),
+      name: new FormControl(''),
+      colour: new FormControl(''),
       navigationLicence: new FormControl('', Validators.required),
       power: new FormControl('', Validators.required),
       declarationOfConformity: new FormControl('', Validators.required),
@@ -36,7 +37,6 @@ export class ModificaImbarcazioneComponent {
 
    }
 
-
    submit() {
     return this.gestisciImbarcazioneService.modifyBoat(this.boatModification.value).subscribe({ 
       next: (rispostaBe) => {
@@ -45,7 +45,8 @@ export class ModificaImbarcazioneComponent {
             window.location.reload();
       },
       error: (err) => {
-        this.err = err.error;
+        this.err = err.error.message;
+        alert(this.err)
       },
     });
   }
@@ -58,7 +59,7 @@ export class ModificaImbarcazioneComponent {
   getBoatList() {
     return this.gestisciImbarcazioneService.getAllBoat().subscribe({
       next: (rispostaBe) => {
-        this.rispostaBeBoat = rispostaBe;
+        this.rispostaBeBoat = rispostaBe.response;
       },
       error: (err) => {
         console.log(err);
@@ -70,22 +71,22 @@ export class ModificaImbarcazioneComponent {
 getSingleBoat(valueSelected: any) {
   return this.gestisciImbarcazioneService.getBoatByLicencePlate(valueSelected).subscribe({
     next: (rispostaBe) => {
+      this.rispostaBe = rispostaBe.response;
       this.boatModification.patchValue({
-        licencePlate: rispostaBe.licencePlate,
-        cf: rispostaBe.cf,
-        name: rispostaBe.name,
-        colour: rispostaBe.colour,
-        navigationLicence: rispostaBe.navigationLicence,
-        power: rispostaBe.power,
-        declarationOfConformity: rispostaBe.declarationOfConformity,
-        rca: rispostaBe.rca,
+        licencePlate: this.rispostaBe.licencePlate,
+        cf: this.rispostaBe.cf,
+        name: this.rispostaBe.name,
+        colour: this.rispostaBe.colour,
+        navigationLicence: this.rispostaBe.navigationLicence,
+        power: this.rispostaBe.power,
+        declarationOfConformity: this.rispostaBe.declarationOfConformity,
+        rca: this.rispostaBe.rca,
       });
     },
     error: (err) => {
       console.log(err);
     }
 });
-
 
 }
 }

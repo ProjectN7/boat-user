@@ -23,7 +23,6 @@ export class GestioneImbarcazioneService {
   }
 
   modifyBoat(boat: any) {
-    console.log(this.baseUrl + '/modificaBoat/' + boat.licencePlate)
     return this.http.post<any>(this.baseUrl + '/modificaBoat/' + boat.licencePlate, boat);
   }
   
@@ -37,12 +36,25 @@ export class GestioneImbarcazioneService {
     return this.http.get<any>(this.baseUrl + '/boat/boatAllList');
   }
 
-  getAllPier() {
-    return this.http.get<any>(this.baseUrl + '/pier/pierAllList');
+  getLicencePlateActiveService() {
+    return this.http.get<any>(this.baseUrl + '/boat/LicencePlateActive')
+  }
+
+  getLicencePlateActiveTicketService() {
+    return this.http.get<any>(this.baseUrl + '/ticket/LicencePlateActive')
+  }
+
+  getAllPier(quayside: any) {
+    return this.http.get<any>(this.baseUrl + '/pier/getPierByQuaysideActive?quayside=' + quayside);
   }
 
   getQuayside(pier: any) {
     return this.http.get<any>(this.baseUrl + '/quayside/quaysideAllList?pier=' + pier);
+  }
+
+  getAllQuaysideActive(dateTimeFrom: any, dateTimeTo: any) {
+    return this.http.get<any>(this.baseUrl + '/quayside/quaysideAllListActive?dateTimeFrom=' + dateTimeFrom + "&dateTimeTo=" + dateTimeTo);
+
   }
 
   CreateReservation(reservation: any) {
@@ -53,8 +65,8 @@ export class GestioneImbarcazioneService {
     return this.http.get<any>(this.baseUrl + '/reservation/reservationListLicencePlate?licencePlate=' + licencePlate);
   }
 
-  deleteReservation(licencePlate: any) {
-    return this.http.get<any>(this.baseUrl + '/reservation/reservationDelete/' + licencePlate);
+  deleteReservation(idReservation: any) {
+    return this.http.get<any>(this.baseUrl + '/reservation/reservationDelete?idReservation=' + idReservation);
   }
 
   deleteTicketReservation(idTicket: any) {

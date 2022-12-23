@@ -10,26 +10,29 @@ import { GestioneImbarcazioneService } from 'src/service/gestisci-imbarcazione.s
   styleUrls: ['./disdetta-banchina.component.scss']
 })
 export class DisdettaBanchinaComponent {
-  quaysideReservation: FormGroup;
+  quaysideDeleteReservation: FormGroup;
   rispostaBeReservation: any;
   rispostaBeReservationQuayside: any;
   rispostaBeLp: any;
+  rispostaBe: any;
   reservationSelected: any;
   lpSelected: any;
   err: any;
   rispostaBeSubmit: any;
+  idReservation: any;
 
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
 
   ) {
-    this.quaysideReservation = new FormGroup({
+    this.quaysideDeleteReservation = new FormGroup({
       licencePlate: new FormControl('', Validators.required),
       pier: new FormControl('', Validators.required),
       quayside: new FormControl('', Validators.required),
       dateTimeFrom: new FormControl('', Validators.required),
       dateTimeTo: new FormControl('', Validators.required),
+      idReservation: new FormControl(Validators.required)
 
     })
    }
@@ -42,18 +45,21 @@ export class DisdettaBanchinaComponent {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
-  submit(licencePlate: any) {
-    return this.gestisciImbarcazioneService.deleteReservation(licencePlate).subscribe({ 
+  submit() {
+    return this.gestisciImbarcazioneService.deleteReservation(this.idReservation).subscribe({ 
       next: (rispostaBeSubmit) => {
-        console.log(rispostaBeSubmit);
         this.rispostaBeSubmit = rispostaBeSubmit.response;
+        alert(this.rispostaBeSubmit)
+        window.location.reload();
         
       },
       error: (err) => {
-        this.err = err.resposne;
+        this.err = err.message;
+        alert(this.err)
       },
     });
   }
+
   getBoatList() {
     return this.gestisciImbarcazioneService.getAllBoat().subscribe({
       next: (rispostaBeLp) => {
@@ -66,10 +72,25 @@ export class DisdettaBanchinaComponent {
 
 }
 
+
+getALlLicencePlateActive() {
+  return this.gestisciImbarcazioneService.getLicencePlateActiveService().subscribe({
+    next: (rispostaBe) => {
+      this.rispostaBe = rispostaBe.response;
+    },
+    error: (err) => {
+      this.err = err.error.response;
+      alert(this.err)
+    }
+});
+
+}
+
 getReservationByLp(licencePlate: any) {
   return this.gestisciImbarcazioneService.getReservationsbyLpService(licencePlate).subscribe({
     next: (rispostaBeReservation) => {
-      this.rispostaBeReservationQuayside = rispostaBeReservation.quayside;
+      this.rispostaBeReservationQuayside = rispostaBeReservation.response.quayside;
+      this.idReservation = rispostaBeReservation.response.idReservation;
     },
     error: (err) => {
       console.log(err);

@@ -18,7 +18,10 @@ export class PrenotazioneBanchinaComponent {
   pierSelected: any;
   quaysideSelected: any;
   err: any;
+  submitted = false;
   quaysideReservation: FormGroup;
+  dateTimeFromSelected: any;
+  dateTimeToSelected: any;
 
   constructor(
     private router: Router,
@@ -47,9 +50,12 @@ export class PrenotazioneBanchinaComponent {
     return this.gestisciImbarcazioneService.CreateReservation(this.quaysideReservation.value).subscribe({ 
       next: (rispostaBeReservation) => {
         this.rispostaBeReservation = rispostaBeReservation.response;
+        alert(this.rispostaBeReservation)
+        window.location.reload();
       },
       error: (err) => {
-        this.err = err.error;
+        this.err = err.error.response;
+        alert(this.err)
       },
     });
   }
@@ -57,22 +63,22 @@ export class PrenotazioneBanchinaComponent {
   getBoatList() {
     return this.gestisciImbarcazioneService.getAllBoat().subscribe({
       next: (rispostaBeLp) => {
-        this.rispostaBeLp = rispostaBeLp;
+        this.rispostaBeLp = rispostaBeLp.response;
       },
       error: (err) => {
-        this.err = err.error;
+        this.err = err.error.message;
       }
   });
 
 }
 
-  getPierList(){
-    return this.gestisciImbarcazioneService.getAllPier().subscribe({
+  getPierList(quayside: any){
+    return this.gestisciImbarcazioneService.getAllPier(quayside).subscribe({
       next: (rispostaBePier) => {
-        this.rispostaBePier = rispostaBePier;
+        this.rispostaBePier = rispostaBePier.response;
     },
       error: (err) => {
-        this.err = err.error;
+        this.err = err.error.message;
       }
     });
   }
@@ -80,13 +86,31 @@ export class PrenotazioneBanchinaComponent {
   getQuaysideByIdPier(pier: any) {
     return this.gestisciImbarcazioneService.getQuayside(pier).subscribe({
       next: (rispostaBeQuaysideActive) => {
-        this.rispostaBeQuaysideActive = rispostaBeQuaysideActive;
+        this.rispostaBeQuaysideActive = rispostaBeQuaysideActive.response;
     },
       error: (err) => {
         this.err = err.error;
       }
     });
    
+  }
+
+  getAllQuaysideActive(dateTimeFrom: any, dateTimeTo: any) {
+    console.log(dateTimeFrom, dateTimeTo)
+    return this.gestisciImbarcazioneService.getAllQuaysideActive(dateTimeFrom, dateTimeTo).subscribe({
+      next: (rispostaBeQuaysideActive) => {
+        console.log(rispostaBeQuaysideActive)
+        this.rispostaBeQuaysideActive = rispostaBeQuaysideActive.response;
+    },
+      error: (err) => {
+        this.err = err.error;
+      }
+    });
+   
+  }
+
+  dateNotSelectedYet() {
+    alert("Seleziona prima le date");
   }
 
 }
