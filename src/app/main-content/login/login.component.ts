@@ -61,13 +61,13 @@ export class LoginComponent {
   userLogin(data: any) {
     this.gestisciUtenteService.loginUser(data).subscribe((result:  any)=> {
       console.warn(result)
-      localStorage.setItem("token",result.token)
+      sessionStorage.setItem("token",result.token)
       this.router.navigateByUrl('/home')
     })
   }
 
   userProfile() {
     let headers = new HttpHeaders()
-    .set("Autorization",`Bearer ${localStorage.getItem('token')}`)
+    .set("Autorization",`Bearer ${sessionStorage.getItem('token')}`)
   }
 }

@@ -57,7 +57,7 @@ export class RegistrationComponent {
   }
 
   goToLoginPage() {
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('/login');
   }
 
 }

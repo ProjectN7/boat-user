@@ -14,8 +14,11 @@ export class HomepageComponent  {
 
 
 
-  exit() {
-    this.router.navigateByUrl('login');
+  LogoutUser() {
+    window.sessionStorage.removeItem("token")
+    console.warn(sessionStorage.getItem("token")) //Controllo se effettivamente ci sia qualcosa nella cache
+    alert("Logout Effettuato con Successo")
+      this.router.navigateByUrl('login');
   }
 
   goToPage(urlpagina: any) {
