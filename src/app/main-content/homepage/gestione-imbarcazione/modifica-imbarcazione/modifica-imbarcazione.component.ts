@@ -19,6 +19,7 @@ export class ModificaImbarcazioneComponent {
   rispostaBeBoat: any;
   submitted = false;
   boatModification: FormGroup;
+  localcf = sessionStorage.getItem("cf");
 
   constructor(
     private router: Router,
@@ -32,7 +33,7 @@ export class ModificaImbarcazioneComponent {
       power: new FormControl('', Validators.required),
       declarationOfConformity: new FormControl('', Validators.required),
       rca: new FormControl('', Validators.required),
-      cf: new FormControl('', Validators.required),
+      cf: new FormControl(this.localcf, Validators.required),
     });
 
    }
@@ -42,7 +43,8 @@ export class ModificaImbarcazioneComponent {
       next: (rispostaBe) => {
         this.rispostaBe = rispostaBe.response;
         alert(this.rispostaBe);
-            window.location.reload();
+        this.router.navigateByUrl('home/gestione-imbarcazione');
+
       },
       error: (err) => {
         this.err = err.error.message;
@@ -57,12 +59,14 @@ export class ModificaImbarcazioneComponent {
   }
 
   getBoatList() {
-    return this.gestisciImbarcazioneService.getAllBoat().subscribe({
+    this.localcf = sessionStorage.getItem("cf")
+    return this.gestisciImbarcazioneService.getLicencePlateByCf(this.localcf).subscribe({
       next: (rispostaBe) => {
         this.rispostaBeBoat = rispostaBe.response;
       },
       error: (err) => {
-        console.log(err);
+        this.err = err.error;
+        alert(this.err.response);
       }
   });
 

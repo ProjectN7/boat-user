@@ -16,6 +16,7 @@ export class InserimentoImbarcazioneComponent {
   err: any;
   boatRegistration: FormGroup;
   submitted = false;
+  localcf = sessionStorage. getItem("cf");
 
   constructor(
     private router: Router,
@@ -29,7 +30,7 @@ export class InserimentoImbarcazioneComponent {
       power: new FormControl('', Validators.required),
       declarationOfConformity: new FormControl('', Validators.required),
       rca: new FormControl('', Validators.required),
-      cf: new FormControl('', Validators.required),
+      cf: new FormControl(this.localcf, Validators.required),
     });
 
    }
@@ -39,7 +40,7 @@ export class InserimentoImbarcazioneComponent {
       next: (rispostaBeSubmit) => {
         this.rispostaBeSubmit = rispostaBeSubmit.message;
         alert(this.rispostaBeSubmit);
-        window.location.reload();
+        this.router.navigateByUrl('home/gestione-imbarcazione');
 
       },
       error: (err) => {

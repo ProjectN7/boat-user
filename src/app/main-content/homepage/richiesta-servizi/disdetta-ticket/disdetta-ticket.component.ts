@@ -17,18 +17,28 @@ export class DisdettaTicketComponent {
   reservationSelected: any;
   lpSelected: any;
   err: any;
-  rispostaBeSubmit: any;
-  rispostaBeTicket: Ticket;
-  idTypeTicket: any;
+  rispostaBeTicket: any;
   rispostaBeDate: any;
-  rispostaBeTicket1: any;
+  rispostaBeNomeTicket: any;
+  idTicket: any;
+
+  localCf = sessionStorage.getItem("cf");
+  deleteTicket: FormGroup;
 
   constructor(
     private router: Router,
     private gestisciImbarcazioneService: GestioneImbarcazioneService
 
   ) { 
-    this.rispostaBeTicket = new Ticket();
+    this.deleteTicket = new FormGroup({
+      date: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      idTicket: new FormControl('', Validators.required),
+      idTypeTicket: new FormControl('', Validators.required),
+      isActive: new FormControl('', Validators.required),
+      licencePlate: new FormControl('',Validators.required)
+
+    })
   }
 
   goToPage(urlpagina: any) {
@@ -39,13 +49,13 @@ export class DisdettaTicketComponent {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
   }
 
-  submit(Ticket: any) {
-    return this.gestisciImbarcazioneService.deleteTicketReservation(Ticket).subscribe({ 
-      next: (rispostaBeSubmit) => {
-        console.log(rispostaBeSubmit);
-        this.rispostaBeSubmit = rispostaBeSubmit.response;
-        alert(this.rispostaBeSubmit);
-        window.location.reload();
+  submit() {
+    return this.gestisciImbarcazioneService.deleteTicketReservation(this.rispostaBeTicket.idTicket).subscribe({ 
+      next: (rispostaBe) => {
+        console.log(rispostaBe);
+        rispostaBe = rispostaBe.response;
+        alert(rispostaBe);
+        this.router.navigateByUrl('home/richiesta-servizi');
         
       },
       error: (err) => {
@@ -56,7 +66,7 @@ export class DisdettaTicketComponent {
 
 
   getAllLicencePlateActive() {
-    return this.gestisciImbarcazioneService.getLicencePlateActiveTicketService().subscribe({
+    return this.gestisciImbarcazioneService.getLicencePlateByCf(this.localCf).subscribe({
       next: (rispostaBeBoat) => {
         this.rispostaBeLp = rispostaBeBoat.response;
       },
@@ -71,22 +81,32 @@ export class DisdettaTicketComponent {
 getReservationByLp(licencePlate: any) {
   return this.gestisciImbarcazioneService.getTicketReservationByLp(licencePlate).subscribe({
     next: (rispostaBe) => {
-      this.rispostaBeTicket = rispostaBe;
-      this.rispostaBeDate = rispostaBe.response.date;
-      this.rispostaBeTicket1 = rispostaBe.response.idTicket;
-      if (this.rispostaBeTicket.idTypeTicket = "1") {
-        this.rispostaBeTicket.idTypeTicket = "RIFORNIMENTO";
-      } else if (this.rispostaBeTicket.idTypeTicket = "2") {
-        this.rispostaBeTicket.idTypeTicket = "PULIZIA"
-      } else {
-        this.rispostaBeTicket.idTypeTicket = "MANUTENZIONE";
-      }
+      this.rispostaBeTicket = rispostaBe.response[0];
+      this.rispostaBeDate = this.rispostaBeTicket.date;
+      this.getTypeTicketName(this.rispostaBeTicket.idTypeTicket);
+     
     },
     error: (err) => {
-      this.err = err.error;
+      this.err = err.error.response;
+      alert(this.err)
+      window.location.reload();
     }
 });
 }
 
+
+getTypeTicketName(typeticket: any) {
+  return this.gestisciImbarcazioneService.getTypeTicketNameService(typeticket).subscribe({
+    next: (rispostaBe) => {
+      this.rispostaBeNomeTicket = rispostaBe.response;
+      console.log(rispostaBe)
+    },
+    error: (err) => {
+      this.err = err.error.response;
+      alert(this.err)
+    
+    }
+});
+}
 
 }

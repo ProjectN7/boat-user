@@ -1,1 +1,28 @@
-<p>cancellazione-imbarcazione works!</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISDETTA BANCHINA</title>
+    
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+          <div class="title"><h1>Elimina Imbarcazione</h1></div>
+          <form [formGroup]="deleteBoat">
+            <label for="lb_licencePlate">Targa</label><br>
+            <div>
+              <div>
+                <select [(ngModel)]="lpSelected" class="form-control" formControlName="licencePlate" name="licencePlate" id="itemSelect" (click)="getBoatList()" required>
+                  <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
+                </select><br>
+              </div>
+            </div>
+              <button type="button" class="form-control" (click)="goBack()">INDIETRO</button>
+              <button type="button" class="form-control" id="btn2" value="submit" (click)="submit()">INVIA</button><br><br>
+          </form>
+          </div>
+    </div>
+</body>
+</html>

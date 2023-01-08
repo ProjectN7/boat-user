@@ -22,6 +22,7 @@ export class PrenotazioneBanchinaComponent {
   quaysideReservation: FormGroup;
   dateTimeFromSelected: any;
   dateTimeToSelected: any;
+  localcf = sessionStorage.getItem("cf");
 
   constructor(
     private router: Router,
@@ -51,7 +52,7 @@ export class PrenotazioneBanchinaComponent {
       next: (rispostaBeReservation) => {
         this.rispostaBeReservation = rispostaBeReservation.response;
         alert(this.rispostaBeReservation)
-        window.location.reload();
+        this.router.navigateByUrl('home/gestione-banchina');
       },
       error: (err) => {
         this.err = err.error.response;
@@ -61,7 +62,7 @@ export class PrenotazioneBanchinaComponent {
   }
 
   getBoatList() {
-    return this.gestisciImbarcazioneService.getAllBoat().subscribe({
+    return this.gestisciImbarcazioneService.getLicencePlateByCf(this.localcf).subscribe({
       next: (rispostaBeLp) => {
         this.rispostaBeLp = rispostaBeLp.response;
       },

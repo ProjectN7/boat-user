@@ -34,7 +34,7 @@
           </div>
           <a href="password_dimenticata.html">Password dimenticata?</a><br><br>
           <span (click)="hideShowPass()" class="fa {eyeIcon}"></span>
-          <button type="button" value="submit" [disabled]="(!login.valid)" (click)="userLogin(login.value)" class="form-control">INVIA</button><br>
+          <button type="button" value="submit" [disabled]="(!login.valid)"  (click)="getCfByEmail(login.value.email); userLogin(login.value)"  class="form-control">INVIA</button><br>
           <label for="lb_registrati">Non hai un account? <a href="registration" routerLink="/registration">Registrati</a></label><br>
           <div>{{rispostaBeLogin}}</div>
         </form>

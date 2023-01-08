@@ -63,6 +63,7 @@ export class LoginComponent {
       console.warn(result)
       sessionStorage.setItem("token",result.token)
       this.router.navigateByUrl('/home')
+    
     })
   }
 
@@ -70,4 +71,14 @@ export class LoginComponent {
     let headers = new HttpHeaders()
     .set("Autorization",`Bearer ${sessionStorage.getItem('token')}`)
   }
+
+
+  getCfByEmail(emailSelected: any) {
+    console.log(emailSelected)
+    this.gestisciUtenteService.getCfByEmailService(emailSelected).subscribe((result:  any)=> {
+      console.warn(result.response)
+      sessionStorage.setItem("cf",result.response)
+    })
+  }
+
 }

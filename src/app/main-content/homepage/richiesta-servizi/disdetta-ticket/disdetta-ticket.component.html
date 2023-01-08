@@ -10,20 +10,20 @@
     <div id="container">
         <div id="content">
           <div class="title"><h1>Disdetta Ticket</h1></div>
-          <form> 
+          <form [formGroup]="deleteTicket"> 
             <label for="lb_licencePlate">Targa</label><br>
-            <select [(ngModel)]="lpSelected" class="form-control" name="licencePlate" id="itemSelect" (click)="getAllLicencePlateActive()" required>
+            <select [(ngModel)]="lpSelected" class="form-control" formControlName="licencePlate" name="licencePlate" id="itemSelect" (click)="getAllLicencePlateActive()" (change)="getReservationByLp(lpSelected)" required>
               <option *ngFor="let response of rispostaBeLp" [value]="response">{{response}}</option>
             </select><br>
             <label for="lb_reservations">Prenotazioni</label><br>
-            <select [(ngModel)]="reservationSelected"  class="form-control" name="reservations" id="itemSelect" (click)="getReservationByLp(lpSelected)" required>
+            <select class="form-control" name="reservations" id="itemSelect" required>
               <option [value]="rispostaBeTicket">
-                Tipo Prenotazione: {{rispostaBeTicket.idTypeTicket}}
+                Tipo Prenotazione: {{rispostaBeNomeTicket}}
                 Data Prenotazione: {{rispostaBeDate}}
               </option>
             </select>
               <button type="button" (click)="goBack()">INDIETRO</button>
-              <button type="button" id="btn2" (click)="submit(rispostaBeTicket1)">INVIA</button><br><br>
+              <button type="button" id="btn2" (click)="submit()">INVIA</button><br><br>
           </form>
           </div>
     </div>

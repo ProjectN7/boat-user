@@ -26,7 +26,13 @@ export class GestisciUtenteService {
     return this.http.post<any>(this.baseUrl + '/modificaUser/'+ user.cf, user);
   }
 
-  getUserDataService(email: any) {
-    return this.http.get<any>(this.baseUrl + "/getUserByEmail?email=" + email)
+  getUserDataService(cf: any) {
+    return this.http.get<any>(this.baseUrl + "/getUserByCf?cf=" + cf)
   }
+
+  getCfByEmailService(emailSelected: any) {
+    return this.http.get<any>(this.baseUrl + "/getCfByEmail?email=" + emailSelected, emailSelected);
+}
+
+
 }

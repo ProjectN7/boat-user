@@ -36,8 +36,8 @@ export class GestioneImbarcazioneService {
     return this.http.get<any>(this.baseUrl + '/boat/boatAllList');
   }
 
-  getLicencePlateActiveService() {
-    return this.http.get<any>(this.baseUrl + '/boat/LicencePlateActive')
+  getLicencePlateActiveService(cf: any) {
+    return this.http.get<any>(this.baseUrl + '/boat/LicencePlateActive?cf=' + cf)
   }
 
   getLicencePlateActiveTicketService() {
@@ -65,6 +65,10 @@ export class GestioneImbarcazioneService {
     return this.http.get<any>(this.baseUrl + '/reservation/reservationListLicencePlate?licencePlate=' + licencePlate);
   }
 
+  getLicencePlateByCf(cf: any) {
+    return this.http.get<any>(this.baseUrl + "/boat/getLicencePlateByCf?cf=" + cf)
+  }
+
   deleteReservation(idReservation: any) {
     return this.http.get<any>(this.baseUrl + '/reservation/reservationDelete?idReservation=' + idReservation);
   }
@@ -73,9 +77,16 @@ export class GestioneImbarcazioneService {
     return this.http.get<any>(this.baseUrl + '/ticket/deleteTicketById?idTicket=' + idTicket);
   }
 
+  deleteBoatService(licencePlate: any) {
+    return this.http.delete<any>(this.baseUrl + '/boat/boatDelete?licencePlate=' + licencePlate);
+  }
+
   getAllTypeTicket() {
     return this.http.get<any>(this.baseUrl + '/ticket/getAllTypeTicket',);
-    
+  }
+
+  getTypeTicketNameService(idTypeTicket: any) {
+    return this.http.get<any>(this.baseUrl + "/ticket/getTypeTicketName?idTypeTicket=" + idTypeTicket)
   }
 
   SubmitTicketRequest(licencePlate: any) {

@@ -20,6 +20,7 @@ export class DisdettaBanchinaComponent {
   err: any;
   rispostaBeSubmit: any;
   idReservation: any;
+  localcf = sessionStorage.getItem("cf");
 
   constructor(
     private router: Router,
@@ -50,7 +51,7 @@ export class DisdettaBanchinaComponent {
       next: (rispostaBeSubmit) => {
         this.rispostaBeSubmit = rispostaBeSubmit.response;
         alert(this.rispostaBeSubmit)
-        window.location.reload();
+        this.router.navigateByUrl('home/gestione-banchina');
         
       },
       error: (err) => {
@@ -74,7 +75,7 @@ export class DisdettaBanchinaComponent {
 
 
 getALlLicencePlateActive() {
-  return this.gestisciImbarcazioneService.getLicencePlateActiveService().subscribe({
+  return this.gestisciImbarcazioneService.getLicencePlateByCf(this.localcf).subscribe({
     next: (rispostaBe) => {
       this.rispostaBe = rispostaBe.response;
     },
@@ -93,7 +94,9 @@ getReservationByLp(licencePlate: any) {
       this.idReservation = rispostaBeReservation.response.idReservation;
     },
     error: (err) => {
-      console.log(err);
+      this.err = err.error.message;
+      alert(this.err);
+      window.location.reload();
     }
 });
 }

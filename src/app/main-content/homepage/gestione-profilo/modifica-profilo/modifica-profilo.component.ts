@@ -15,11 +15,11 @@ export class ModificaProfiloComponent implements OnInit {
   // creazione del form da utilizzare per i campi di input
   modification: FormGroup;
   submitted = false;
-  email = "prova@gmail.com"
+  localcf = sessionStorage.getItem("cf");
 
 
   ngOnInit(): void {
-    this.getUserData(this.email);
+    this.getUserData(this.localcf);
    }
 
   constructor(
@@ -52,6 +52,7 @@ export class ModificaProfiloComponent implements OnInit {
       next: (rispostaBe) => {
         this.rispostaBe = rispostaBe.response;
         alert(this.rispostaBe)
+        this.router.navigateByUrl('home/gestione-profilo');
       },
       error: (err) => {
         this.err = err.error.message;
@@ -66,8 +67,8 @@ export class ModificaProfiloComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
-  getUserData(email: any){
-    return this.gestisciUtenteService.getUserDataService(email).subscribe({ 
+  getUserData(cf: any){
+    return this.gestisciUtenteService.getUserDataService(cf).subscribe({ 
       next: (rispostaBe) => {
         console.log(rispostaBe)
         this.rispostaBe = rispostaBe.response;

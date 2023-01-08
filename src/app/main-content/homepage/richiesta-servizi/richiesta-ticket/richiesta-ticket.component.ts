@@ -20,6 +20,7 @@ export class RichiestaTicketComponent {
   rispostaBeTicket: any;
   err: any;
   requestTicket: FormGroup;
+  localcf = sessionStorage.getItem("cf");
 
   constructor(
     private router: Router,
@@ -44,7 +45,7 @@ export class RichiestaTicketComponent {
       next: (rispostaBe) => {
         this.rispostaBeRichiesta = rispostaBe.response;
         alert(this.rispostaBeRichiesta)
-        window.location.reload();
+        this.router.navigateByUrl('home/richiesta-servizi');
       },
       error: (err) => {
           this.err = err.error.message;
@@ -55,7 +56,7 @@ export class RichiestaTicketComponent {
 
 
   getBoatList() {
-    return this.gestisciImbarcazioneService.getAllBoat().subscribe({
+    return this.gestisciImbarcazioneService.getLicencePlateByCf(this.localcf).subscribe({
       next: (rispostaBe) => {
         this.rispostaBeBoat = rispostaBe.response;
       },
