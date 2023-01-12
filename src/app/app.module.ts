@@ -21,6 +21,8 @@ import { GestioneBanchinaComponent } from './main-content/homepage/gestione-banc
 import { RichiestaTicketComponent } from './main-content/homepage/richiesta-servizi/richiesta-ticket/richiesta-ticket.component';
 import { DisdettaTicketComponent } from './main-content/homepage/richiesta-servizi/disdetta-ticket/disdetta-ticket.component';
 import { TokenInterceptorService } from 'src/service/token-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { TokenInterceptorService } from 'src/service/token-interceptor.service';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     
 
 

@@ -12,6 +12,7 @@ export class User {
     email: string;
     password: string;
     boatLicence: string;
+    isActive: string;
 
     constructor() {
         this.name = "";
@@ -26,6 +27,7 @@ export class User {
         this.email = "";
         this.password = "";
         this.boatLicence = "";
+        this.isActive = "";
     }
 
 }

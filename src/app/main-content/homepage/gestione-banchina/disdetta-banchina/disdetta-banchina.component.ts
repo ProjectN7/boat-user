@@ -82,6 +82,8 @@ getALlLicencePlateActive() {
     error: (err) => {
       this.err = err.error.response;
       alert(this.err)
+      this.router.navigateByUrl('home/gestione-banchina');
+
     }
 });
 
@@ -96,7 +98,7 @@ getReservationByLp(licencePlate: any) {
     error: (err) => {
       this.err = err.error.message;
       alert(this.err);
-      window.location.reload();
+      this.router.navigateByUrl('home/gestione-banchina');
     }
 });
 }

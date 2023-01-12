@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifica Profilo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="container">
@@ -82,7 +83,7 @@
                 <div>
                   <div>
                     <label for="lb_email">Email</label>
-                    <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+                    <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"  maxlength="25" required readonly>
                     <div 
                     [hidden]="modification.controls['email'].valid || (modification.controls['email'].pristine && !submitted)"
                     class="alert alert-danger">
@@ -93,10 +94,14 @@
                 <div>
                   <div>
                     <label for="lb_email">Password</label>
-                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
-                    <div [hidden]="modification.controls['password'].valid || modification.controls['password'].pristine"  class="alert alert-danger">
-                      La password non è valida
-                    </div><br>
+                    <div class="form-group">
+                      <input class="form-control" formControlName="password" [type]="changetype?'password':'text'" placeholder="Enter your password" minlength="5" maxlength="25" required>
+                      <span class="eyeicon" (click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i>
+                      </span>
+                      <div [hidden]="modification.controls['password'].valid || modification.controls['password'].pristine"  class="alert alert-danger">
+                        La password non è valida, (lunghezza password minima consentita: 5)
+                      </div><br>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -107,10 +112,7 @@
                       La Patente Nautica non è valida (esempio: AA645656)
                     </div>
                   </div>
-                </div><br>
-            <input type="checkbox" class="form-control" class="widthauto" id="acceptance">
-            <label for="lb_acceptance" class="widthauto">Accettazione informativa sul trattamento dei dati personali (ART. 13 D.LGS. 196/2003) e Regolamento UE 2016/679</label><br><br>
-            
+                </div><br>  
             <button type="button"  class="form-control" (click)="submit()" value="submit" [disabled]="(!modification.valid)" class="form-control">MODIFICA</button><br>
             <button type="button" class="form-control" (click)="goBack()">INDIETRO</button>
         </form>

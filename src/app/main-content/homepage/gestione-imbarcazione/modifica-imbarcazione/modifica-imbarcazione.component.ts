@@ -67,6 +67,7 @@ export class ModificaImbarcazioneComponent {
       error: (err) => {
         this.err = err.error;
         alert(this.err.response);
+        this.router.navigateByUrl('home/gestione-imbarcazione');
       }
   });
 

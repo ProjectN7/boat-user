@@ -6,6 +6,7 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
       <div id="container">
@@ -15,7 +16,7 @@
           <div>
             <div>
               <label for="lb_email">Email</label>
-              <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+              <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" maxlength="25" required>
               <div 
               [hidden]="login.controls['email'].valid || (login.controls['email'].pristine && !submitted)"
               class="alert alert-danger">
@@ -26,14 +27,16 @@
           <div>
             <div>
               <label for="lb_email">Password</label>
-              <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
-              <div [hidden]="login.controls['password'].valid || login.controls['password'].pristine"  class="alert alert-danger">
-                La password non è valida
-              </div><br>
+              <div class="form-group">
+                <input class="form-control" formControlName="password" [type]="changetype?'password':'text'" placeholder="Password" minlength="5" maxlength="25" required>
+                <span class="eyeicon" (click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i>
+                </span>
+                <div [hidden]="login.controls['password'].valid || login.controls['password'].pristine"  class="alert alert-danger">
+                  La password non è valida
+                </div><br>
+              </div>
             </div>
           </div>
-          <a href="password_dimenticata.html">Password dimenticata?</a><br><br>
-          <span (click)="hideShowPass()" class="fa {eyeIcon}"></span>
           <button type="button" value="submit" [disabled]="(!login.valid)"  (click)="getCfByEmail(login.value.email); userLogin(login.value)"  class="form-control">INVIA</button><br>
           <label for="lb_registrati">Non hai un account? <a href="registration" routerLink="/registration">Registrati</a></label><br>
           <div>{{rispostaBeLogin}}</div>

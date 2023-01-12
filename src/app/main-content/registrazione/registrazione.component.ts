@@ -16,6 +16,10 @@ export class RegistrationComponent {
   // creazione del form da utilizzare per i campi di input
   registration: FormGroup;
   submitted = false;
+  fieldTextType: any;
+  repeatFieldTextType: any;
+  visible:boolean = true;
+  changetype:boolean =true;
 
   constructor(
     private router: Router,
@@ -35,6 +39,7 @@ export class RegistrationComponent {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       boatLicence: new FormControl('', Validators.required),
+      isActive: new FormControl(1,Validators.required),
     });
 
    }
@@ -59,5 +64,11 @@ export class RegistrationComponent {
   goToLoginPage() {
     this.router.navigateByUrl('/login');
   }
+
+  viewpass(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
+
 
 }

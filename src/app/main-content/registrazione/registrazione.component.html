@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrati</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="container">
@@ -13,7 +14,7 @@
           <div>
             <div>
               <label for="lb_name">Nome</label>
-              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome" pattern="[a-zA-Z]*" required>
+              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome" pattern="[a-zA-Z]*" maxlength="25" required>
               <div [hidden]="registration.controls['name'].valid || registration.controls['name'].pristine" class="alert alert-danger">
                 Il Nome non è valido
               </div><br>
@@ -22,7 +23,7 @@
           <div>
             <div>
               <label for="lb_name">Cognome</label>
-              <input type="text" class="form-control" formControlName="surname" id="surname" placeholder="Cognome" pattern="[a-zA-Z]*" required>
+              <input type="text" class="form-control" formControlName="surname" id="surname" placeholder="Cognome" pattern="[a-zA-Z]*" maxlength="25" required>
               <div [hidden]="registration.controls['surname'].valid || registration.controls['surname'].pristine"  class="alert alert-danger">
                 Il Cognome non è valido
               </div><br>
@@ -253,10 +254,14 @@
                 <div>
                   <div>
                     <label for="lb_email">Password</label>
-                    <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
-                    <div [hidden]="registration.controls['password'].valid || registration.controls['password'].pristine"  class="alert alert-danger">
-                      La password non è valida
-                    </div><br>
+                    <div class="form-group">
+                      <input class="form-control" formControlName="password" [type]="changetype?'password':'text'" placeholder="Password" minlength="5" maxlength="25" required>
+                      <span class="eyeicon" (click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i>
+                      </span>
+                      <div [hidden]="registration.controls['password'].valid || registration.controls['password'].pristine"  class="alert alert-danger">
+                        La password non è valida, (lunghezza password minima consentita: 5)
+                      </div><br>
+                    </div>
                   </div>
                 </div>
                 <div>

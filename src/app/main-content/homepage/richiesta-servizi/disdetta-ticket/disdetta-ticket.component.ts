@@ -73,6 +73,7 @@ export class DisdettaTicketComponent {
       error: (err) => {
         this.err = err.error.response;
         alert(this.err)
+        this.router.navigateByUrl('home/richiesta-servizi');
       }
   });
   

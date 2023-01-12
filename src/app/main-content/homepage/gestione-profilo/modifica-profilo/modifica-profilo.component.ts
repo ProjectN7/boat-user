@@ -16,6 +16,11 @@ export class ModificaProfiloComponent implements OnInit {
   modification: FormGroup;
   submitted = false;
   localcf = sessionStorage.getItem("cf");
+  fieldTextType: any;
+  repeatFieldTextType: any;
+  visible:boolean = true;
+  changetype:boolean =true;
+
 
 
   ngOnInit(): void {
@@ -96,6 +101,20 @@ export class ModificaProfiloComponent implements OnInit {
 
   goBack() {
     this.router.navigate([this.router.url.substring(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
+
+  viewpass(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
   }
 
 }

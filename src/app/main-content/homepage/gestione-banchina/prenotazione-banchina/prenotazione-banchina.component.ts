@@ -68,6 +68,8 @@ export class PrenotazioneBanchinaComponent {
       },
       error: (err) => {
         this.err = err.error.message;
+        alert(this.err);
+        this.router.navigateByUrl('home/gestione-banchina');
       }
   });
 

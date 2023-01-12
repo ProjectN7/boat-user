@@ -61,7 +61,10 @@ export class RichiestaTicketComponent {
         this.rispostaBeBoat = rispostaBe.response;
       },
       error: (err) => {
-        this.err = err.error;
+        this.err = err.error.message;
+        alert(this.err);
+        this.router.navigateByUrl('home/richiesta-servizi');
+
       }
   });
 
